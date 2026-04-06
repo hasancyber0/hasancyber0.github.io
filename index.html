@@ -20,7 +20,6 @@
             position: relative;
         }
 
-        /* Background Animation Canvas */
         #canvas {
             position: fixed;
             top: 0; left: 0;
@@ -30,19 +29,31 @@
         }
 
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
-        .header { margin-bottom: 30px; text-align: center; }
         
-        /* Sky Blue Breathing Glow Effect - Single Line */
+        .header { 
+            margin-bottom: 30px; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
+        .profile-img {
+            width: 70px; 
+            height: 70px;
+            border-radius: 50%; 
+            border: 2px solid #00d4ff;
+            box-shadow: 0 0 10px #00d4ff;
+            object-fit: cover; 
+        }
+        
         h1 { 
-            font-size: clamp(18px, 6vw, 26px); 
+            font-size: clamp(16px, 5vw, 22px); 
             margin: 0; 
             font-weight: 800; 
             color: #fff; 
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif; 
-            white-space: nowrap;
-            display: inline-block;
             animation: skyGlow 3s ease-in-out infinite;
         }
 
@@ -58,11 +69,11 @@
         .btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
         .btn-wa { background: #25d366; } 
-        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); } /* Instagram Gradient */
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); } 
         .btn-fb { background: #1877f2; } 
         .btn-tt { background: #000; border: 1px solid #333; }
 
-        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; }
+        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; display: block; }
         .card { background: var(--card); padding: 20px; border-radius: 18px; margin-bottom: 12px; border: 1px solid #1e293b; transition: 0.3s; }
         .card:hover { border-color: #3b82f6; transform: scale(1.01); }
         .card h3 { margin: 0 0 8px; font-size: 18px; color: #fff; }
@@ -75,8 +86,9 @@
 
 <div class="container">
     <div class="header">
+        <img src="IMG_20260406_002616.jpg" alt="Hasan" class="profile-img">
         <h1>HASAN CYBER EXPERT</h1>
-        </div>
+    </div>
     
     <div class="contact-notice">For any emergency service, contact us via WhatsApp or other social handles below.</div>
     
@@ -209,4 +221,4 @@
 </script>
 
 </body>
-</html>
+    </html>
