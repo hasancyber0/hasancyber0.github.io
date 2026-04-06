@@ -11,11 +11,26 @@
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
         
-        .header { margin: 40px 0; text-align: center; overflow: hidden; }
+        /* --- Header Box Style (Glassmorphism) --- */
+        .header { 
+            margin: 40px 0; 
+            text-align: center; 
+            overflow: hidden; 
+            padding: 20px 10px;
+            /* কাঁচের মতো স্বচ্ছ ব্যাকগ্রাউন্ড */
+            background: rgba(22, 32, 49, 0.5); 
+            border-radius: 15px;
+            /* পেছনের ব্যাকগ্রাউন্ড ব্লার করার জন্য */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            /* হালকা গ্লোয়িং বর্ডার */
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+        }
         
         /* --- Multi-Color Flowing Animation --- */
         h1 { 
-            font-size: clamp(14px, 5.5vw, 28px); 
+            font-size: clamp(14px, 5.5vw, 26px); /* বক্সের ভেতর ফিট করার জন্য সামান্য ছোট করা হয়েছে */
             margin: 0; 
             font-weight: 800; 
             text-transform: uppercase; 
@@ -139,4 +154,4 @@
     anim();
 </script>
 </body>
-</html>
+    </html>
