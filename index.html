@@ -4,77 +4,209 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HASAN CYBER EXPERT</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    
     <style>
         :root { --bg: #050810; --card: #162031; --text: #f8fafc; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; overflow-x: hidden; }
-        .container { max-width: 480px; margin: 0 auto; position: relative; }
         
-        /* Header Layout Fix */
-        .header { margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
-        
-        .profile-img { 
-            width: 70px; 
-            height: 70px; 
-            border-radius: 50%; 
-            border: 2px solid #00d4ff; 
-            box-shadow: 0 0 10px #00d4ff; 
-            object-fit: cover; 
-            flex-shrink: 0;
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            overflow-x: hidden;
+            position: relative;
         }
+
+        /* Background Animation Canvas */
+        #canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
+        .header { margin-bottom: 30px; text-align: center; }
         
+        /* Sky Blue Breathing Glow Effect - Single Line */
         h1 { 
-            font-size: 18px; 
+            font-size: clamp(18px, 6vw, 26px); 
             margin: 0; 
             font-weight: 800; 
             color: #fff; 
-            text-transform: uppercase; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif; 
-            white-space: nowrap; 
+            white-space: nowrap;
+            display: inline-block;
             animation: skyGlow 3s ease-in-out infinite;
         }
 
         @keyframes skyGlow {
-            0%, 100% { text-shadow: 0 0 5px #00d4ff; opacity: 0.9; }
-            50% { text-shadow: 0 0 20px #00d4ff; opacity: 1; }
+            0%, 100% { text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff; opacity: 0.8; }
+            50% { text-shadow: 0 0 15px #00d4ff, 0 0 30px #00d4ff; opacity: 1; }
         }
 
-        .contact-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 15px; border-radius: 12px; margin: 20px 0; font-size: 13px; color: #60a5fa; text-align: center; }
-        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; color: white; text-align: center; font-size: 14px; }
+        .contact-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 15px; border-radius: 12px; margin: 20px 0; font-size: 14px; color: #60a5fa; text-align: center; }
+        
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
+        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
+
         .btn-wa { background: #25d366; } 
-        .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); } /* Instagram Gradient */
         .btn-fb { background: #1877f2; } 
         .btn-tt { background: #000; border: 1px solid #333; }
-        .card { background: var(--card); padding: 20px; border-radius: 18px; margin-top: 12px; border: 1px solid #1e293b; }
-        h3 { margin: 0 0 8px; font-size: 16px; color: #fff; }
-        p { margin: 0; font-size: 13px; color: #94a3b8; }
+
+        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; }
+        .card { background: var(--card); padding: 20px; border-radius: 18px; margin-bottom: 12px; border: 1px solid #1e293b; transition: 0.3s; }
+        .card:hover { border-color: #3b82f6; transform: scale(1.01); }
+        .card h3 { margin: 0 0 8px; font-size: 18px; color: #fff; }
+        .card p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.6; }
     </style>
 </head>
 <body>
+
+<canvas id="canvas"></canvas>
+
 <div class="container">
     <div class="header">
-        <img src="hasan.jpg" alt="Hasan" class="profile-img">
         <h1>HASAN CYBER EXPERT</h1>
-    </div>
-
-    <div class="contact-notice">For any emergency service, contact us via WhatsApp below.</div>
-
+        </div>
+    
+    <div class="contact-notice">For any emergency service, contact us via WhatsApp or other social handles below.</div>
+    
     <div class="btn-grid">
         <a href="https://wa.me/8801323630741" class="btn btn-wa">WhatsApp</a>
-        <a href="https://www.instagram.com/bruno_your_father" class="btn btn-ig">Instagram</a>
+        <a href="https://www.instagram.com/bruno_your_father?igsh=MWF4bWw5YWo2ZDU0ag==" class="btn btn-ig">Instagram</a>
         <a href="https://www.facebook.com/share/1MHz1Sgnyh/" class="btn btn-fb">Facebook</a>
         <a href="https://www.tiktok.com/@bruno_your_father1" class="btn btn-tt">TikTok</a>
     </div>
 
+    <span class="section-title">Our Premium Services</span>
+
     <div class="card">
         <h3>Hacked Account Recovery</h3>
-        <p>Restoring access using advanced forensic methods.</p>
+        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts using advanced forensic methods.</p>
     </div>
     <div class="card">
         <h3>Disable & Ban Appeal</h3>
-        <p>Professional appeals to unban disabled accounts.</p>
+        <p>Providing professional legal appeals to unban accounts disabled for community guideline violations.</p>
+    </div>
+    <div class="card">
+        <h3>2FA & Security Bypass</h3>
+        <p>Expert assistance in bypassing 2FA locks when recovery codes or mobile numbers are lost.</p>
+    </div>
+    <div class="card">
+        <h3>Malware & Spyware Removal</h3>
+        <p>Deep scanning and cleaning devices to remove hidden trackers, spyware, and harmful malware.</p>
+    </div>
+    <div class="card">
+        <h3>Impersonation Takedown</h3>
+        <p>Detecting and removing fake profiles created in your name to protect your digital identity.</p>
+    </div>
+    <div class="card">
+        <h3>Social Media Security Audit</h3>
+        <p>Complete security hardening for your profiles to prevent future hacking attempts.</p>
+    </div>
+    <div class="card">
+        <h3>Page & Group Restoration</h3>
+        <p>Recovering admin access for hijacked business pages or large community groups.</p>
+    </div>
+    <div class="card">
+        <h3>Data Privacy Consulting</h3>
+        <p>Personalized advice on maintaining online anonymity and protecting sensitive personal data.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
+        &copy; 2026 HASAN CYBER EXPERT | SYLHET, BD
     </div>
 </div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray;
+
+    class Particle {
+        constructor(x, y, directionX, directionY, size) {
+            this.x = x;
+            this.y = y;
+            this.directionX = directionX;
+            this.directionY = directionY;
+            this.size = size;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
+            ctx.fill();
+        }
+        update() {
+            if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+            if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+            this.x += this.directionX;
+            this.y += this.directionY;
+            this.draw();
+        }
+    }
+
+    function init() {
+        particlesArray = [];
+        let numberOfParticles = (canvas.height * canvas.width) / 9000;
+        for (let i = 0; i < numberOfParticles * 1.5; i++) {
+            let size = (Math.random() * 2) + 0.8;
+            let x = (Math.random() * (innerWidth - size * 2));
+            let y = (Math.random() * (innerHeight - size * 2));
+            let directionX = (Math.random() * 1.2) - 0.6; 
+            let directionY = (Math.random() * 1.2) - 0.6;
+            particlesArray.push(new Particle(x, y, directionX, directionY, size));
+        }
+    }
+
+    function connect() {
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
+                + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                    let opacityValue = 1 - (distance / 25000);
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacityValue * 0.6})`;
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+        }
+        connect();
+    }
+
+    window.addEventListener('resize', function() {
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+        init();
+    });
+
+    init();
+    animate();
+</script>
+
 </body>
 </html>
