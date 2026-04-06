@@ -8,33 +8,73 @@
     <style>
         :root { --bg: #050810; --card: #162031; --text: #f8fafc; }
         body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; overflow-x: hidden; }
-        .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
+        .container { max-width: 480px; margin: 0 auto; position: relative; }
+        
+        /* Header Layout Fix */
         .header { margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
-        .profile-img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #00d4ff; box-shadow: 0 0 10px #00d4ff; object-fit: cover; flex-shrink: 0; }
-        h1 { font-size: 18px; margin: 0; font-weight: 800; color: #fff; text-transform: uppercase; font-family: 'Orbitron', sans-serif; white-space: nowrap; animation: skyGlow 3s infinite; }
-        @keyframes skyGlow { 0%, 100% { text-shadow: 0 0 5px #00d4ff; opacity: 0.8; } 50% { text-shadow: 0 0 20px #00d4ff; opacity: 1; } }
-        .contact-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 15px; border-radius: 12px; margin: 20px 0; font-size: 14px; color: #60a5fa; text-align: center; }
+        
+        .profile-img { 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            border: 2px solid #00d4ff; 
+            box-shadow: 0 0 10px #00d4ff; 
+            object-fit: cover; 
+            flex-shrink: 0;
+        }
+        
+        h1 { 
+            font-size: 18px; 
+            margin: 0; 
+            font-weight: 800; 
+            color: #fff; 
+            text-transform: uppercase; 
+            font-family: 'Orbitron', sans-serif; 
+            white-space: nowrap; 
+            animation: skyGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes skyGlow {
+            0%, 100% { text-shadow: 0 0 5px #00d4ff; opacity: 0.9; }
+            50% { text-shadow: 0 0 20px #00d4ff; opacity: 1; }
+        }
+
+        .contact-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 15px; border-radius: 12px; margin: 20px 0; font-size: 13px; color: #60a5fa; text-align: center; }
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; color: white; text-align: center; }
-        .btn-wa { background: #25d366; } .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
-        .btn-fb { background: #1877f2; } .btn-tt { background: #000; border: 1px solid #333; }
+        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; color: white; text-align: center; font-size: 14px; }
+        .btn-wa { background: #25d366; } 
+        .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
+        .btn-fb { background: #1877f2; } 
+        .btn-tt { background: #000; border: 1px solid #333; }
         .card { background: var(--card); padding: 20px; border-radius: 18px; margin-top: 12px; border: 1px solid #1e293b; }
+        h3 { margin: 0 0 8px; font-size: 16px; color: #fff; }
+        p { margin: 0; font-size: 13px; color: #94a3b8; }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
-        <img src="IMG_20260406_002616.jpg" alt="Hasan" class="profile-img">
+        <img src="hasan.jpg" alt="Hasan" class="profile-img">
         <h1>HASAN CYBER EXPERT</h1>
     </div>
-    <div class="contact-notice">For emergency service, contact us below.</div>
+
+    <div class="contact-notice">For any emergency service, contact us via WhatsApp below.</div>
+
     <div class="btn-grid">
         <a href="https://wa.me/8801323630741" class="btn btn-wa">WhatsApp</a>
         <a href="https://www.instagram.com/bruno_your_father" class="btn btn-ig">Instagram</a>
         <a href="https://www.facebook.com/share/1MHz1Sgnyh/" class="btn btn-fb">Facebook</a>
         <a href="https://www.tiktok.com/@bruno_your_father1" class="btn btn-tt">TikTok</a>
     </div>
-    <div class="card"><h3>Hacked Account Recovery</h3><p>Restoring access using advanced methods.</p></div>
+
+    <div class="card">
+        <h3>Hacked Account Recovery</h3>
+        <p>Restoring access using advanced forensic methods.</p>
+    </div>
+    <div class="card">
+        <h3>Disable & Ban Appeal</h3>
+        <p>Professional appeals to unban disabled accounts.</p>
+    </div>
 </div>
 </body>
 </html>
