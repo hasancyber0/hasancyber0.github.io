@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HASAN CYBER EXPERT</title>
     <style>
-        :root { --bg: #0b1120; --card: #162031; --text: #f8fafc; --neon: #00ff41; }
+        :root { --bg: #0b1120; --card: #162031; --text: #f8fafc; }
         
         body { 
             background-color: var(--bg); 
@@ -17,33 +17,34 @@
             position: relative;
         }
 
-        /* Matrix Animation Canvas */
+        /* Background Canvas for Animated HASAN Text */
         #canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -1;
-            opacity: 0.15;
+            opacity: 0.12;
         }
 
         .container { max-width: 450px; margin: 0 auto; position: relative; z-index: 1; }
         .header { margin-bottom: 30px; text-align: center; }
         
-        /* Neon Lighting Effect for Header */
+        /* Neon RGB Lighting Effect for Name */
         h1 { 
             font-size: 28px; 
             margin: 0; 
             font-weight: 800; 
             color: #fff; 
-            text-shadow: 0 0 5px var(--neon), 0 0 10px var(--neon), 0 0 20px var(--neon); 
-            animation: glow 1.5s ease-in-out infinite alternate;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            animation: lighting 3s linear infinite;
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 5px var(--neon), 0 0 10px var(--neon); }
-            to { text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon), 0 0 40px var(--neon); }
+        @keyframes lighting {
+            0% { text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6; color: #fff; }
+            33% { text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41; color: #e0ffe0; }
+            66% { text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055; color: #fff0f5; }
+            100% { text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6; color: #fff; }
         }
 
         .tagline { color: #94a3b8; font-size: 14px; margin-top: 10px; line-height: 1.5; }
@@ -52,7 +53,7 @@
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
         .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
         .btn:hover { transform: translateY(-3px); opacity: 0.9; }
-        
+
         .btn-wa { background: #25d366; } 
         .btn-mail { background: #ea4335; } 
         .btn-fb { background: #1877f2; } 
@@ -68,7 +69,7 @@
             border: 1px solid #1e293b; 
             transition: 0.3s;
         }
-        .card:hover { border-color: var(--neon); }
+        .card:hover { border-color: #3b82f6; }
         .card h3 { margin: 0 0 8px; font-size: 18px; color: #fff; }
         .card p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.6; }
     </style>
@@ -80,7 +81,7 @@
 <div class="container">
     <div class="header">
         <h1>HASAN CYBER EXPERT</h1>
-        <p class="tagline">Elite cyber security solutions and professional account recovery services.</p>
+        <p class="tagline">Elite cyber security solutions and professional account recovery services worldwide.</p>
     </div>
     
     <div class="contact-notice">For emergency support, contact us via WhatsApp or social handles.</div>
@@ -92,23 +93,31 @@
         <a href="https://www.tiktok.com/@Bruno_your_father1" class="btn btn-tt">TikTok</a>
     </div>
 
-    <span class="section-title">Premium Services</span>
+    <span class="section-title">Our Premium Services</span>
 
     <div class="card">
-        <h3>Account Recovery</h3>
-        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts.</p>
+        <h3>Hacked Account Recovery</h3>
+        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts using forensic methods.</p>
     </div>
     <div class="card">
-        <h3>Ban Appeal</h3>
-        <p>Professional appeals to restore accounts disabled for community violations.</p>
+        <h3>Disable & Ban Appeal</h3>
+        <p>Professional legal appeals to restore accounts disabled for community violations.</p>
     </div>
     <div class="card">
-        <h3>Security Audit</h3>
-        <p>Complete security hardening to prevent future hacking attempts.</p>
+        <h3>2FA & Security Bypass</h3>
+        <p>Regain access to accounts locked by 2FA when recovery codes are unavailable.</p>
     </div>
     <div class="card">
-        <h3>Malware Removal</h3>
-        <p>Deep scanning to remove hidden trackers, spyware, and harmful malware.</p>
+        <h3>Malware & Spyware Removal</h3>
+        <p>Deep scanning to remove hidden trackers, spyware, and harmful malware from devices.</p>
+    </div>
+    <div class="card">
+        <h3>Impersonation Takedown</h3>
+        <p>Removing fake profiles created to protect your digital identity and reputation.</p>
+    </div>
+    <div class="card">
+        <h3>Social Media Security Audit</h3>
+        <p>Hardening profile security to prevent future hacking and unauthorized access.</p>
     </div>
 
     <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
@@ -117,14 +126,15 @@
 </div>
 
 <script>
+    // Matrix Rain style Animation with "HASAN" text
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    const chars = "01";
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
+    const text = "HASAN";
+    const fontSize = 14;
+    const columns = canvas.width / 50; 
     const drops = [];
 
     for (let x = 0; x < columns; x++) drops[x] = 1;
@@ -132,18 +142,18 @@
     function draw() {
         ctx.fillStyle = 'rgba(11, 17, 32, 0.1)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#0f0';
-        ctx.font = fontSize + 'px arial';
+        
+        ctx.fillStyle = '#3b82f6'; 
+        ctx.font = fontSize + 'px monospace';
 
         for (let i = 0; i < drops.length; i++) {
-            const text = chars.charAt(Math.floor(Math.random() * chars.length));
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            ctx.fillText(text, i * 60, drops[i] * fontSize);
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
             drops[i]++;
         }
     }
-    setInterval(draw, 35);
+    setInterval(draw, 50);
 </script>
 
 </body>
-</html>
+        </html>
