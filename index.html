@@ -5,74 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HASAN CYBER EXPERT</title>
     <style>
-        :root { --bg: #0b1120; --card: #162031; --text: #f8fafc; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
-        .container { max-width: 450px; margin: 0 auto; }
-        .header { margin-bottom: 30px; }
-        h1 { font-size: 28px; margin: 0; font-weight: 800; color: #fff; }
-        .tagline { color: #94a3b8; font-size: 14px; margin-top: 10px; line-height: 1.5; }
-        .contact-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 15px; border-radius: 12px; margin: 20px 0; font-size: 14px; color: #60a5fa; text-align: center; }
+        :root { 
+            --bg: #050810; 
+            --card: rgba(16, 23, 41, 0.9); 
+            --text: #f8fafc; 
+            --primary: #3b82f6;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .container { max-width: 450px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+        
+        .header { text-align: center; margin-bottom: 40px; animation: fadeInDown 1s ease; }
+        h1 { font-size: 28px; margin: 0; font-weight: 800; color: #fff; text-shadow: 0 0 10px var(--primary); text-transform: uppercase; }
+        .tagline { color: #94a3b8; font-size: 14px; margin-top: 10px; }
+
+        .contact-notice { 
+            background: rgba(59, 130, 246, 0.1); 
+            border: 1px solid var(--primary); 
+            padding: 15px; 
+            border-radius: 12px; 
+            margin: 20px 0; 
+            font-size: 13px; 
+            color: #60a5fa; 
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+        }
+
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
-        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; }
-        .btn-wa { background: #25d366; } .btn-mail { background: #ea4335; } 
-        .btn-fb { background: #1877f2; } .btn-tt { background: #000; border: 1px solid #333; }
-        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; }
-        .card { background: var(--card); padding: 20px; border-radius: 18px; margin-bottom: 12px; border: 1px solid #1e293b; }
+        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.4s; }
+        .btn:hover { transform: scale(1.05); }
+
+        .btn-wa { background: #25d366; }
+        .btn-mail { background: #ea4335; } 
+        .btn-fb { background: #1877f2; } 
+        .btn-tt { background: #000; border: 1px solid #333; }
+
+        .card { 
+            background: var(--card); 
+            padding: 20px; 
+            border-radius: 18px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid var(--primary);
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateX(10px); background: rgba(16, 23, 41, 1); }
         .card h3 { margin: 0 0 8px; font-size: 18px; color: #fff; }
         .card p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
+
+<canvas id="canvas"></canvas>
+
 <div class="container">
     <div class="header">
         <h1>HASAN CYBER EXPERT</h1>
-        <p class="tagline">Providing elite cyber security solutions and professional account recovery services worldwide.</p>
+        <p class="tagline">Protecting your digital assets with elite security solutions.</p>
     </div>
-    <div class="contact-notice">For any emergency service, contact us via WhatsApp or other social handles below.</div>
+    
+    <div class="contact-notice">Emergency? Contact me via WhatsApp immediately.</div>
+    
     <div class="btn-grid">
         <a href="https://wa.me/8801323630741" class="btn btn-wa">WhatsApp</a>
         <a href="mailto:syaneditz7@gmail.com" class="btn btn-mail">Email</a>
         <a href="https://www.facebook.com/share/1MHz1Sgnyh/" class="btn btn-fb">Facebook</a>
         <a href="https://www.tiktok.com/@Bruno_your_father1" class="btn btn-tt">TikTok</a>
     </div>
-    <span class="section-title">Our Premium Services</span>
 
     <div class="card">
-        <h3>Hacked Account Recovery</h3>
-        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts using advanced forensic methods.</p>
+        <h3>Account Recovery</h3>
+        <p>Advanced restoration for hijacked social media profiles.</p>
     </div>
     <div class="card">
-        <h3>Disable & Ban Appeal</h3>
-        <p>Providing professional legal appeals to unban accounts disabled for community guideline violations.</p>
-    </div>
-    <div class="card">
-        <h3>2FA & Security Bypass</h3>
-        <p>Expert assistance in bypassing 2FA locks when recovery codes or mobile numbers are lost.</p>
-    </div>
-    <div class="card">
-        <h3>Malware & Spyware Removal</h3>
-        <p>Deep scanning and cleaning devices to remove hidden trackers, spyware, and harmful malware.</p>
-    </div>
-    <div class="card">
-        <h3>Impersonation Takedown</h3>
-        <p>Detecting and removing fake profiles created in your name to protect your digital identity.</p>
-    </div>
-    <div class="card">
-        <h3>Social Media Security Audit</h3>
-        <p>Complete security hardening for your profiles to prevent future hacking attempts.</p>
-    </div>
-    <div class="card">
-        <h3>Page & Group Restoration</h3>
-        <p>Recovering admin access for hijacked business pages or large community groups.</p>
-    </div>
-    <div class="card">
-        <h3>Data Privacy Consulting</h3>
-        <p>Personalized advice on maintaining online anonymity and protecting sensitive personal data.</p>
+        <h3>Security Hardening</h3>
+        <p>Complete protection against hackers and spyware.</p>
     </div>
 
-    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
-        &copy; 2026 HASAN CYBER EXPERT | SYLHET, BD
+    <div style="text-align: center; margin-top: 40px; font-size: 11px; color: #475569; letter-spacing: 2px;">
+        SYLHET, BANGLADESH | EST 2026
     </div>
 </div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.height = window.innerHeight; canvas.width = window.innerWidth;
+    const chars = "01";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+    function draw() {
+        ctx.fillStyle = 'rgba(5, 8, 16, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0f0';
+        ctx.font = fontSize + 'px arial';
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 33);
+</script>
 </body>
-  </html>
+    </html>
