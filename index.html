@@ -32,33 +32,30 @@
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
         .header { margin-bottom: 30px; text-align: center; }
         
-        /* Neon RGB Lighting and Single Line Styling */
+        /* Sky Blue Breathing Glow Effect - Single Line */
         h1 { 
-            font-size: clamp(18px, 6vw, 26px); /* স্ক্রিন অনুযায়ী সাইজ ছোট-বড় হবে */
+            font-size: clamp(18px, 6vw, 26px); 
             margin: 0; 
             font-weight: 800; 
             color: #fff; 
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif; 
-            white-space: nowrap; /* নাম এক লাইনে রাখবে */
-            overflow: hidden;
-            animation: lighting 4s linear infinite;
+            white-space: nowrap;
             display: inline-block;
+            animation: skyGlow 3s ease-in-out infinite;
         }
 
-        @keyframes lighting {
-            0% { text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6; }
-            33% { text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41; }
-            66% { text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055; }
-            100% { text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6; }
+        @keyframes skyGlow {
+            0%, 100% { text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff; opacity: 0.8; }
+            50% { text-shadow: 0 0 15px #00d4ff, 0 0 30px #00d4ff; opacity: 1; }
         }
 
-        .tagline { color: #94a3b8; font-size: 13px; margin-top: 10px; line-height: 1.5; }
-        .contact-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 15px; border-radius: 12px; margin: 20px 0; font-size: 13px; color: #60a5fa; text-align: center; }
+        .tagline { color: #94a3b8; font-size: 14px; margin-top: 10px; line-height: 1.5; }
+        .contact-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 15px; border-radius: 12px; margin: 20px 0; font-size: 14px; color: #60a5fa; text-align: center; }
         
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
-        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; color: white; text-align: center; transition: 0.3s; }
+        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
         .btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
         .btn-wa { background: #25d366; } 
@@ -66,11 +63,11 @@
         .btn-fb { background: #1877f2; } 
         .btn-tt { background: #000; border: 1px solid #333; }
 
-        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; }
+        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; }
         .card { background: var(--card); padding: 20px; border-radius: 18px; margin-bottom: 12px; border: 1px solid #1e293b; transition: 0.3s; }
-        .card:hover { border-color: #3b82f6; transform: scale(1.02); }
-        .card h3 { margin: 0 0 8px; font-size: 17px; color: #fff; }
-        .card p { margin: 0; font-size: 12px; color: #94a3b8; line-height: 1.6; }
+        .card:hover { border-color: #3b82f6; transform: scale(1.01); }
+        .card h3 { margin: 0 0 8px; font-size: 18px; color: #fff; }
+        .card p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -80,10 +77,10 @@
 <div class="container">
     <div class="header">
         <h1>HASAN CYBER EXPERT</h1>
-        <p class="tagline">Elite cyber security solutions and professional account recovery services worldwide.</p>
+        <p class="tagline">Providing elite cyber security solutions and professional account recovery services worldwide.</p>
     </div>
     
-    <div class="contact-notice">For any emergency service, contact us via WhatsApp or social handles.</div>
+    <div class="contact-notice">For any emergency service, contact us via WhatsApp or other social handles below.</div>
     
     <div class="btn-grid">
         <a href="https://wa.me/8801323630741" class="btn btn-wa">WhatsApp</a>
@@ -96,22 +93,38 @@
 
     <div class="card">
         <h3>Hacked Account Recovery</h3>
-        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts using advanced forensics.</p>
+        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts using advanced forensic methods.</p>
     </div>
     <div class="card">
         <h3>Disable & Ban Appeal</h3>
-        <p>Professional legal appeals to unban accounts disabled for community violations.</p>
+        <p>Providing professional legal appeals to unban accounts disabled for community guideline violations.</p>
     </div>
     <div class="card">
         <h3>2FA & Security Bypass</h3>
-        <p>Assistance in bypassing 2FA locks when recovery codes or numbers are lost.</p>
+        <p>Expert assistance in bypassing 2FA locks when recovery codes or mobile numbers are lost.</p>
+    </div>
+    <div class="card">
+        <h3>Malware & Spyware Removal</h3>
+        <p>Deep scanning and cleaning devices to remove hidden trackers, spyware, and harmful malware.</p>
+    </div>
+    <div class="card">
+        <h3>Impersonation Takedown</h3>
+        <p>Detecting and removing fake profiles created in your name to protect your digital identity.</p>
     </div>
     <div class="card">
         <h3>Social Media Security Audit</h3>
         <p>Complete security hardening for your profiles to prevent future hacking attempts.</p>
     </div>
+    <div class="card">
+        <h3>Page & Group Restoration</h3>
+        <p>Recovering admin access for hijacked business pages or large community groups.</p>
+    </div>
+    <div class="card">
+        <h3>Data Privacy Consulting</h3>
+        <p>Personalized advice on maintaining online anonymity and protecting sensitive personal data.</p>
+    </div>
 
-    <div style="text-align: center; margin-top: 40px; font-size: 11px; color: #475569;">
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
         &copy; 2026 HASAN CYBER EXPERT | SYLHET, BD
     </div>
 </div>
@@ -135,7 +148,7 @@
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = '#00ff41';
+            ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
             ctx.fill();
         }
         update() {
@@ -154,8 +167,8 @@
             let size = (Math.random() * 2) + 0.5;
             let x = (Math.random() * (innerWidth - size * 2));
             let y = (Math.random() * (innerHeight - size * 2));
-            let directionX = (Math.random() * 0.8) - 0.4;
-            let directionY = (Math.random() * 0.8) - 0.4;
+            let directionX = (Math.random() * 0.4) - 0.2;
+            let directionY = (Math.random() * 0.4) - 0.2;
             particlesArray.push(new Particle(x, y, directionX, directionY, size));
         }
     }
@@ -167,7 +180,7 @@
                 + ((particlesArray[a].y - particlesArray[b].y) ** 2);
                 if (distance < (canvas.width / 8) * (canvas.height / 8)) {
                     let opacityValue = 1 - (distance / 20000);
-                    ctx.strokeStyle = `rgba(0, 255, 65, ${opacityValue})`;
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacityValue * 0.3})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
