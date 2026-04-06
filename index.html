@@ -11,7 +11,7 @@
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
         
-        /* --- Shared Box Styling (Glassmorphism) --- */
+        /* Shared Box Styling (Glassmorphism) */
         .glass-box { 
             text-align: center; 
             background: rgba(22, 32, 49, 0.5); 
@@ -22,21 +22,11 @@
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
         }
 
-        /* --- Header Box (Name) --- */
-        .header { 
-            margin: 30px 0 10px 0; 
-            padding: 15px 5px;
-        }
-        
-        h1 { 
-            /* Fixed Responsive font size */
-            font-size: clamp(16px, 5vw, 24px); 
-            margin: 0; 
+        /* Shared Rainbow Text Style */
+        .rainbow-text {
             font-weight: 800; 
             text-transform: uppercase; 
             font-family: 'Orbitron', sans-serif; 
-            white-space: nowrap; 
-            letter-spacing: 1px;
             background: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -44,17 +34,33 @@
             animation: rainbowFlow 3s linear infinite;
         }
 
-        /* --- Bio Text Box (New Box) --- */
+        /* Header Box (Name) */
+        .header { 
+            margin: 30px 0 10px 0; 
+            padding: 15px 5px;
+        }
+        
+        h1 { 
+            font-size: clamp(16px, 5vw, 24px); 
+            margin: 0; 
+            white-space: nowrap; 
+            letter-spacing: 1px;
+        }
+
+        /* --- Bio Text Box (Smaller and Colorized) --- */
         .bio-box {
             margin-bottom: 25px;
-            padding: 10px 15px;
+            padding: 8px 12px;
         }
 
         .contact-info {
-            font-size: 13px;
-            color: #94a3b8;
+            font-size: clamp(11px, 3.5vw, 13px); /* আগের চেয়ে ছোট করা হয়েছে */
             margin: 0;
-            line-height: 1.4;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+            /* নামের মতো একই কালারিং ইফেক্ট এখানেও বসানো হলো */
+            white-space: normal;
+            font-weight: 600; /* হালকা কম করা হয়েছে নামের চেয়ে */
         }
 
         @keyframes rainbowFlow {
@@ -80,11 +86,11 @@
 <div class="container">
     
     <div class="header glass-box">
-        <h1>HASAN CYBER EXPERT</h1>
+        <h1 class="rainbow-text">HASAN CYBER EXPERT</h1>
     </div>
     
     <div class="bio-box glass-box">
-        <p class="contact-info">
+        <p class="contact-info rainbow-text">
             Feel free to contact me for any cyber security services
         </p>
     </div>
@@ -158,4 +164,4 @@
     anim();
 </script>
 </body>
-            </html>
+</html>
