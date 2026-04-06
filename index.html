@@ -33,15 +33,17 @@
         }
 
         .header { margin: 30px 0 10px 0; padding: 15px 5px; }
-        h1 { font-size: clamp(16px, 5vw, 24px); margin: 0; white-space: nowrap; letter-spacing: 1px; }
+        h1 { font-size: clamp(16px, 5vw, 22px); margin: 0; white-space: nowrap; letter-spacing: 1px; }
 
-        .bio-box { margin-bottom: 25px; padding: 8px 12px; }
+        /* --- Bio Box Adjusted for One Line --- */
+        .bio-box { margin-bottom: 25px; padding: 10px 8px; }
         .contact-info {
-            font-size: clamp(11px, 3.5vw, 13px);
+            font-size: clamp(10px, 3.2vw, 12px); /* সাইজ আরও ছোট করা হয়েছে */
             margin: 0;
-            line-height: 1.3;
-            letter-spacing: 1px;
-            font-weight: 600;
+            line-height: 1;
+            letter-spacing: 0.2px; /* স্পেসিং কমানো হয়েছে যাতে এক লাইনে আটে */
+            white-space: nowrap; /* এক লাইনে রাখার জন্য */
+            font-weight: 700;
         }
 
         @keyframes rainbowFlow {
@@ -145,4 +147,4 @@
     anim();
 </script>
 </body>
-                    </html>
+                                                                           </html>
