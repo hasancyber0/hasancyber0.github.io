@@ -11,37 +11,35 @@
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
         
-        /* Header Adjusted for Single Line */
-        .header { 
-            margin: 40px 0; 
-            text-align: center; 
-            overflow: hidden; 
-        }
+        .header { margin: 40px 0; text-align: center; overflow: hidden; }
         
+        /* --- Multi-Color Flowing Animation --- */
         h1 { 
             font-size: clamp(14px, 5.5vw, 28px); 
             margin: 0; 
             font-weight: 800; 
-            color: #fff; 
             text-transform: uppercase; 
             font-family: 'Orbitron', sans-serif; 
             white-space: nowrap; 
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             
-            /* --- কপি করা লাইটিং এনিমেশন এখানে অ্যাড করা হয়েছে --- */
-            animation: skyGlow 3s ease-in-out infinite; 
+            /* Gradient with popular colors */
+            background: linear-gradient(
+                to right, 
+                #ff0000, #ff7300, #fffb00, #48ff00, 
+                #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Fast Flowing Animation */
+            animation: rainbowFlow 3s linear infinite;
         }
 
-        /* --- লাইটিং এনিমেশন ডেফিনিশন (হালকা জ্বলবে ও নিভবে) --- */
-        @keyframes skyGlow { 
-            0%, 100% { 
-                text-shadow: 0 0 8px #00d4ff, 0 0 15px #00d4ff; 
-                opacity: 0.8; 
-            } 
-            50% { 
-                text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff; 
-                opacity: 1; 
-            } 
+        @keyframes rainbowFlow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
         
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 35px; }
