@@ -19,20 +19,20 @@
         }
         
         h1 { 
-            font-size: clamp(14px, 5.5vw, 28px); /* ফন্ট সাইজ অটো অ্যাডজাস্ট হবে */
+            font-size: clamp(14px, 5.5vw, 28px); 
             margin: 0; 
             font-weight: 800; 
             color: #fff; 
             text-transform: uppercase; 
             font-family: 'Orbitron', sans-serif; 
-            white-space: nowrap; /* লেখা দুই লাইনে যাবে না */
+            white-space: nowrap; 
             letter-spacing: 1px;
             
-            /* --- Breathing Blue Glow Animation --- */
+            /* --- কপি করা লাইটিং এনিমেশন এখানে অ্যাড করা হয়েছে --- */
             animation: skyGlow 3s ease-in-out infinite; 
         }
 
-        /* --- Animation Definition (হালকা জ্বলবে ও নিভবে) --- */
+        /* --- লাইটিং এনিমেশন ডেফিনিশন (হালকা জ্বলবে ও নিভবে) --- */
         @keyframes skyGlow { 
             0%, 100% { 
                 text-shadow: 0 0 8px #00d4ff, 0 0 15px #00d4ff; 
