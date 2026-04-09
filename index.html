@@ -30,7 +30,6 @@
 
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
         
-        /* Glassmorphism Boxes */
         .glass-box { 
             text-align: center; 
             background: rgba(22, 32, 49, 0.5); 
@@ -51,7 +50,6 @@
             display: block;
         }
 
-        /* Header (Left to Right) */
         .header { margin: 10px 0 12px 0; padding: 15px 5px; }
         h1 { 
             font-size: clamp(16px, 5vw, 22px); 
@@ -62,7 +60,6 @@
             animation: flowLR 4s linear infinite;
         }
 
-        /* Bio Box (Right to Left) */
         .bio-box { margin-bottom: 25px; padding: 10px 8px; }
         .contact-info {
             font-size: clamp(10px, 3.2vw, 12px);
@@ -88,7 +85,6 @@
 
         .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; display: block; font-family: 'Orbitron', sans-serif;}
         
-        /* Submission Form Card */
         .card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid #1e293b; margin-bottom: 20px; transition: 0.3s; }
         .card:hover { border-color: #3b82f6; }
         .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; outline: none; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; }
@@ -121,14 +117,55 @@
             <input type="text" id="uName" placeholder="Your Name (Optional)" class="form-input">
             <select id="uCategory" class="form-select" required>
                 <option value="" disabled selected>Select Case Category</option>
-                <option value="Hacked Account Recovery">Hacked Account Recovery</option>
-                <option value="Disable & Ban Appeal">Disable & Ban Appeal</option>
-                <option value="2FA & Security Bypass">2FA & Security Bypass</option>
-                <option value="Malware & Spyware Removal">Malware & Spyware Removal</option>
-                <option value="Fake Profile Takedown">Fake Profile Takedown</option>
-                <option value="Other">Other</option>
+                <optgroup label="Facebook Services">
+                    <option value="Facebook Account Recovery">Any Facebook Account Recovery</option>
+                    <option value="Facebook Page Restoration">Facebook Page Recovery/Remove</option>
+                    <option value="Facebook Group Admin Recovery">Facebook Group Admin Recovery</option>
+                    <option value="Facebook Disabled/Locked ID">Facebook Disabled/Locked ID Bypass</option>
+                    <option value="Facebook 2FA Bypass">Facebook 2FA/Code Problem</option>
+                    <option value="Facebook Impersonation Takedown">Facebook Fake ID Removal</option>
+                </optgroup>
+                <optgroup label="Instagram Services">
+                    <option value="Instagram Hacked Recovery">Instagram Hacked Recovery</option>
+                    <option value="Instagram Ban Appeal">Instagram Ban ID Recovery</option>
+                    <option value="Instagram 2FA Bypass">Instagram Security Code Bypass</option>
+                    <option value="Instagram Content Removal">Instagram Content/ID Takedown</option>
+                </optgroup>
+                <optgroup label="TikTok Services">
+                    <option value="TikTok Hacked Recovery">TikTok Hacked ID Recovery</option>
+                    <option value="TikTok Ban Appeal">TikTok Ban/Community Guidelines Recovery</option>
+                    <option value="TikTok Shadowban Fix">TikTok Shadowban Solution</option>
+                    <option value="TikTok 2FA Recovery">TikTok Login/Verify Problem</option>
+                </optgroup>
+                <optgroup label="WhatsApp & Messaging">
+                    <option value="WhatsApp Ban Removal">WhatsApp Ban Unblock</option>
+                    <option value="WhatsApp Hacked Access">WhatsApp Hacked/OTP Problem</option>
+                    <option value="Telegram Recovery">Telegram Account Recovery</option>
+                    <option value="Messenger Login Issue">Messenger Login Issue Fix</option>
+                </optgroup>
+                <optgroup label="Device & OS Security">
+                    <option value="Spyware/Malware Removal">Malware/Spyware Removal</option>
+                    <option value="Android/iOS Security Audit">Phone Security Hardening</option>
+                    <option value="Hidden Tracker Detection">Hidden Tracker Scan</option>
+                    <option value="Remote Access Block">Remote Access Block (Hacker Stop)</option>
+                </optgroup>
+                <optgroup label="Premium Cyber Services">
+                    <option value="OSINT Investigation">OSINT (Number to Info)</option>
+                    <option value="Doxing/Privacy Protection">Privacy/Data Leak Fix</option>
+                    <option value="Dark Web Monitoring">Dark Web Data Scan</option>
+                    <option value="Phishing Protection">Phishing/Link Attack Shield</option>
+                    <option value="Cyber Bullying Help">Cyber Bullying Protection</option>
+                    <option value="Blackmail/Extortion Help">Blackmail/Extortion Solution</option>
+                    <option value="Gmail/Email Recovery">Gmail/Outlook Recovery</option>
+                    <option value="Website Security Scan">Personal Website Security</option>
+                    <option value="WiFi Security Patch">WiFi/Network Hacking Protection</option>
+                    <option value="Game Account Recovery">Free Fire/PUBG ID Recovery</option>
+                    <option value="Identity Theft Protection">Identity Theft Help</option>
+                    <option value="Digital Forensics">Digital Forensics Request</option>
+                    <option value="Other Custom Case">Other (Describe Below)</option>
+                </optgroup>
             </select>
-            <textarea id="uDetails" rows="4" placeholder="Describe your problem..." class="form-input" style="resize: none;" required></textarea>
+            <textarea id="uDetails" rows="4" placeholder="আপনার সমস্যাটি বিস্তারিত লিখুন..." class="form-input" style="resize: none;" required></textarea>
             <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
         </form>
     </div>
@@ -143,87 +180,59 @@
         const name = document.getElementById('uName').value || "Guest User";
         const cat = document.getElementById('uCategory').value;
         const msg = document.getElementById('uDetails').value;
-        if (!cat || !msg) { alert("Please fill the required fields!"); return; }
+        if (!cat || !msg) { alert("সবগুলো ঘর পূরণ করুন!"); return; }
         const phone = "8801323630741";
         const fullMsg = `*HASAN CYBER EXPERT - NEW CASE*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Problem:* ${msg}`;
         window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
     }
 
-    /* Particle Background Logic */
+    /* Background Particles */
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    let particlesArray;
-
+    let particlesArray = [];
     class Particle {
-        constructor(x, y, directionX, directionY, size) {
-            this.x = x; this.y = y;
-            this.directionX = directionX; this.directionY = directionY;
-            this.size = size;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
-            ctx.fill();
-        }
+        constructor(x, y, dx, dy, size) { this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size; }
+        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 212, 255, 0.8)'; ctx.fill(); }
         update() {
-            if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-            if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-            this.x += this.directionX;
-            this.y += this.directionY;
+            if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
+            if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
+            this.x += this.dx; this.y += this.dy;
             this.draw();
         }
     }
-
     function init() {
         particlesArray = [];
-        let num = (canvas.height * canvas.width) / 9000;
-        for (let i = 0; i < num * 1.5; i++) {
-            let size = (Math.random() * 2) + 0.8;
-            let x = (Math.random() * (innerWidth - size * 2));
-            let y = (Math.random() * (innerHeight - size * 2));
-            let dx = (Math.random() * 1.2) - 0.6; 
-            let dy = (Math.random() * 1.2) - 0.6;
+        let n = (canvas.width * canvas.height) / 9000;
+        for (let i = 0; i < n; i++) {
+            let size = Math.random() * 2 + 0.8;
+            let x = Math.random() * innerWidth;
+            let y = Math.random() * innerHeight;
+            let dx = Math.random() * 1.2 - 0.6;
+            let dy = Math.random() * 1.2 - 0.6;
             particlesArray.push(new Particle(x, y, dx, dy, size));
         }
     }
-
-    function connect() {
-        for (let a = 0; a < particlesArray.length; a++) {
-            for (let b = a; b < particlesArray.length; b++) {
-                let dist = ((particlesArray[a].x - particlesArray[b].x) ** 2)
-                + ((particlesArray[a].y - particlesArray[b].y) ** 2);
-                if (dist < (canvas.width / 7) * (canvas.height / 7)) {
-                    let opacity = 1 - (dist / 25000);
-                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacity * 0.6})`;
-                    ctx.lineWidth = 1.2;
-                    ctx.beginPath();
-                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                    ctx.stroke();
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0,0,innerWidth, innerHeight);
+        particlesArray.forEach(p => p.update());
+        /* Simple Line Connection for speed */
+        for(let a=0; a<particlesArray.length; a++){
+            for(let b=a; b<particlesArray.length; b++){
+                let dist = ((particlesArray[a].x - particlesArray[b].x)**2) + ((particlesArray[a].y - particlesArray[b].y)**2);
+                if(dist < 10000){
+                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.1)';
+                    ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
                 }
             }
         }
     }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, innerWidth, innerHeight);
-        particlesArray.forEach(p => p.update());
-        connect();
-    }
-
-    window.addEventListener('resize', () => {
-        canvas.width = innerWidth; canvas.height = innerHeight;
-        init();
-    });
-
-    init();
-    animate();
+    window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
+    init(); animate();
 </script>
 
 </body>
-            </html>
+                </html>
