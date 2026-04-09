@@ -117,55 +117,48 @@
             <input type="text" id="uName" placeholder="Your Name (Optional)" class="form-input">
             <select id="uCategory" class="form-select" required>
                 <option value="" disabled selected>Select Case Category</option>
-                <optgroup label="Facebook Services">
-                    <option value="Facebook Account Recovery">Any Facebook Account Recovery</option>
-                    <option value="Facebook Page Restoration">Facebook Page Recovery/Remove</option>
-                    <option value="Facebook Group Admin Recovery">Facebook Group Admin Recovery</option>
-                    <option value="Facebook Disabled/Locked ID">Facebook Disabled/Locked ID Bypass</option>
-                    <option value="Facebook 2FA Bypass">Facebook 2FA/Code Problem</option>
-                    <option value="Facebook Impersonation Takedown">Facebook Fake ID Removal</option>
+                
+                <optgroup label="Account Recovery & Forensics">
+                    <option value="Hacked Facebook Recovery">Advanced Facebook Account Recovery</option>
+                    <option value="Facebook Business Page Restoration">Business Page Restoration & Admin Recovery</option>
+                    <option value="Instagram Forensic Recovery">Instagram Forensic ID Restoration</option>
+                    <option value="TikTok Guideline Ban Appeal">TikTok Permanent Ban Appeal (Legal)</option>
+                    <option value="2FA & Security Lock Bypass">Multi-Factor Authentication (2FA) Bypass</option>
+                    <option value="Email Account Forensic Recovery">Gmail/Corporate Email Recovery</option>
                 </optgroup>
-                <optgroup label="Instagram Services">
-                    <option value="Instagram Hacked Recovery">Instagram Hacked Recovery</option>
-                    <option value="Instagram Ban Appeal">Instagram Ban ID Recovery</option>
-                    <option value="Instagram 2FA Bypass">Instagram Security Code Bypass</option>
-                    <option value="Instagram Content Removal">Instagram Content/ID Takedown</option>
+
+                <optgroup label="Cyber Investigation (OSINT)">
+                    <option value="Advanced OSINT Investigation">Digital Footprint & OSINT Investigation</option>
+                    <option value="Phone Number Data Tracing">Advanced Number to Data Tracing</option>
+                    <option value="Cyber Bullying & Extortion">Cyber Blackmail & Extortion Solution</option>
+                    <option value="Deep Web Data Monitoring">Deep Web Personal Data Monitoring</option>
+                    <option value="IP & Location Tracking">Authorized IP Tracking & Log Analysis</option>
                 </optgroup>
-                <optgroup label="TikTok Services">
-                    <option value="TikTok Hacked Recovery">TikTok Hacked ID Recovery</option>
-                    <option value="TikTok Ban Appeal">TikTok Ban/Community Guidelines Recovery</option>
-                    <option value="TikTok Shadowban Fix">TikTok Shadowban Solution</option>
-                    <option value="TikTok 2FA Recovery">TikTok Login/Verify Problem</option>
+
+                <optgroup label="Malware & Device Security">
+                    <option value="Spyware/Rat Removal">Advanced Spyware & RAT Removal</option>
+                    <option value="Remote Access Block">Unauthorized Remote Access Detection</option>
+                    <option value="Device Hardening Audit">Smartphone & PC Security Hardening</option>
+                    <option value="Malicious Link Analysis">Phishing & Malicious Link Forensics</option>
+                    <option value="Network Vulnerability Scan">Home/Office WiFi Security Patching</option>
                 </optgroup>
-                <optgroup label="WhatsApp & Messaging">
-                    <option value="WhatsApp Ban Removal">WhatsApp Ban Unblock</option>
-                    <option value="WhatsApp Hacked Access">WhatsApp Hacked/OTP Problem</option>
-                    <option value="Telegram Recovery">Telegram Account Recovery</option>
-                    <option value="Messenger Login Issue">Messenger Login Issue Fix</option>
+
+                <optgroup label="Corporate & Identity Protection">
+                    <option value="Impersonation & Fake Profile Takedown">Impersonation Takedown (Identity Theft)</option>
+                    <option value="Digital Branding Protection">Online Brand & Reputation Protection</option>
+                    <option value="Data Breach Prevention">Personal Data Breach Prevention Audit</option>
+                    <option value="Doxing Defense Services">Doxing & Leak Defense Consulting</option>
+                    <option value="Sensitive Content Removal">Non-Consensual Content Takedown</option>
                 </optgroup>
-                <optgroup label="Device & OS Security">
-                    <option value="Spyware/Malware Removal">Malware/Spyware Removal</option>
-                    <option value="Android/iOS Security Audit">Phone Security Hardening</option>
-                    <option value="Hidden Tracker Detection">Hidden Tracker Scan</option>
-                    <option value="Remote Access Block">Remote Access Block (Hacker Stop)</option>
+
+                <optgroup label="Premium Gaming Security">
+                    <option value="Gaming Account Forensic Recovery">High-Value Gaming Account Recovery</option>
+                    <option value="In-Game Scammer Tracking">Game Asset Scammer Investigation</option>
                 </optgroup>
-                <optgroup label="Premium Cyber Services">
-                    <option value="OSINT Investigation">OSINT (Number to Info)</option>
-                    <option value="Doxing/Privacy Protection">Privacy/Data Leak Fix</option>
-                    <option value="Dark Web Monitoring">Dark Web Data Scan</option>
-                    <option value="Phishing Protection">Phishing/Link Attack Shield</option>
-                    <option value="Cyber Bullying Help">Cyber Bullying Protection</option>
-                    <option value="Blackmail/Extortion Help">Blackmail/Extortion Solution</option>
-                    <option value="Gmail/Email Recovery">Gmail/Outlook Recovery</option>
-                    <option value="Website Security Scan">Personal Website Security</option>
-                    <option value="WiFi Security Patch">WiFi/Network Hacking Protection</option>
-                    <option value="Game Account Recovery">Free Fire/PUBG ID Recovery</option>
-                    <option value="Identity Theft Protection">Identity Theft Help</option>
-                    <option value="Digital Forensics">Digital Forensics Request</option>
-                    <option value="Other Custom Case">Other (Describe Below)</option>
-                </optgroup>
+
+                <option value="Other High Priority Case">Other High-Priority Security Case</option>
             </select>
-            <textarea id="uDetails" rows="4" placeholder="আপনার সমস্যাটি বিস্তারিত লিখুন..." class="form-input" style="resize: none;" required></textarea>
+            <textarea id="uDetails" rows="4" placeholder="প্রবলেমটি টেকনিক্যাল ভাষায় বিস্তারিত লিখুন..." class="form-input" style="resize: none;" required></textarea>
             <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
         </form>
     </div>
@@ -180,13 +173,13 @@
         const name = document.getElementById('uName').value || "Guest User";
         const cat = document.getElementById('uCategory').value;
         const msg = document.getElementById('uDetails').value;
-        if (!cat || !msg) { alert("সবগুলো ঘর পূরণ করুন!"); return; }
+        if (!cat || !msg) { alert("সবগুলো তথ্য সঠিকভাবে প্রদান করুন!"); return; }
         const phone = "8801323630741";
-        const fullMsg = `*HASAN CYBER EXPERT - NEW CASE*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Problem:* ${msg}`;
+        const fullMsg = `*HASAN CYBER EXPERT - CASE REPORT*%0A%0A*Client Name:* ${name}%0A*Case Category:* ${cat}%0A*Technical Details:* ${msg}`;
         window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
     }
 
-    /* Background Particles */
+    /* Background Particles & Connections */
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -204,13 +197,13 @@
     }
     function init() {
         particlesArray = [];
-        let n = (canvas.width * canvas.height) / 9000;
+        let n = (canvas.width * canvas.height) / 9500;
         for (let i = 0; i < n; i++) {
             let size = Math.random() * 2 + 0.8;
             let x = Math.random() * innerWidth;
             let y = Math.random() * innerHeight;
-            let dx = Math.random() * 1.2 - 0.6;
-            let dy = Math.random() * 1.2 - 0.6;
+            let dx = Math.random() * 1.0 - 0.5;
+            let dy = Math.random() * 1.0 - 0.5;
             particlesArray.push(new Particle(x, y, dx, dy, size));
         }
     }
@@ -218,12 +211,11 @@
         requestAnimationFrame(animate);
         ctx.clearRect(0,0,innerWidth, innerHeight);
         particlesArray.forEach(p => p.update());
-        /* Simple Line Connection for speed */
         for(let a=0; a<particlesArray.length; a++){
             for(let b=a; b<particlesArray.length; b++){
                 let dist = ((particlesArray[a].x - particlesArray[b].x)**2) + ((particlesArray[a].y - particlesArray[b].y)**2);
                 if(dist < 10000){
-                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.1)';
+                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.15)';
                     ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                     ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
                 }
@@ -235,4 +227,4 @@
 </script>
 
 </body>
-                </html>
+</html>
