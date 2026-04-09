@@ -30,7 +30,7 @@
 
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
         
-        /* --- Shared Box Styling (Glassmorphism) --- */
+        /* Glassmorphism Boxes */
         .glass-box { 
             text-align: center; 
             background: rgba(22, 32, 49, 0.5); 
@@ -41,7 +41,6 @@
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
         }
 
-        /* Shared Rainbow Text Definition */
         .rainbow-text {
             font-weight: 800; 
             text-transform: uppercase; 
@@ -52,7 +51,7 @@
             display: block;
         }
 
-        /* --- Header Box (Left to Right Flow) --- */
+        /* Header (Left to Right) */
         .header { margin: 10px 0 12px 0; padding: 15px 5px; }
         h1 { 
             font-size: clamp(16px, 5vw, 22px); 
@@ -63,7 +62,7 @@
             animation: flowLR 4s linear infinite;
         }
 
-        /* --- Bio Box (Right to Left Flow) --- */
+        /* Bio Box (Right to Left) */
         .bio-box { margin-bottom: 25px; padding: 10px 8px; }
         .contact-info {
             font-size: clamp(10px, 3.2vw, 12px);
@@ -75,30 +74,25 @@
             animation: flowRL 4s linear infinite;
         }
 
-        /* Animations */
-        @keyframes flowLR {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-        @keyframes flowRL {
-            0% { background-position: 200% center; }
-            100% { background-position: 0% center; }
-        }
+        @keyframes flowLR { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        @keyframes flowRL { 0% { background-position: 200% center; } 100% { background-position: 0% center; } }
         
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
         .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
         .btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
         .btn-wa { background: #25d366; } 
-        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #bc1888 100%); }
         .btn-fb { background: #1877f2; } 
         .btn-tt { background: #000; border: 1px solid #333; }
 
         .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; display: block; font-family: 'Orbitron', sans-serif;}
-        .card { background: var(--card); padding: 20px; border-radius: 18px; margin-bottom: 12px; border: 1px solid #1e293b; transition: 0.3s; }
-        .card:hover { border-color: #3b82f6; transform: scale(1.01); }
-        .card h3 { margin: 0 0 8px; font-size: 18px; color: #fff; }
-        .card p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.6; }
+        
+        /* Submission Form Card */
+        .card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid #1e293b; margin-bottom: 20px; transition: 0.3s; }
+        .card:hover { border-color: #3b82f6; }
+        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; outline: none; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; }
+        .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -121,39 +115,22 @@
         <a href="https://www.tiktok.com/@bruno_your_father1" class="btn btn-tt">TikTok</a>
     </div>
 
-    <span class="section-title">Our Premium Services</span>
-
+    <span class="section-title">CASE SUBMISSION</span>
     <div class="card">
-        <h3>Hacked Account Recovery</h3>
-        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts using advanced forensic methods.</p>
-    </div>
-    <div class="card">
-        <h3>Disable & Ban Appeal</h3>
-        <p>Providing professional legal appeals to unban accounts disabled for community guideline violations.</p>
-    </div>
-    <div class="card">
-        <h3>2FA & Security Bypass</h3>
-        <p>Expert assistance in bypassing 2FA locks when recovery codes or mobile numbers are lost.</p>
-    </div>
-    <div class="card">
-        <h3>Malware & Spyware Removal</h3>
-        <p>Deep scanning and cleaning devices to remove hidden trackers, spyware, and harmful malware.</p>
-    </div>
-    <div class="card">
-        <h3>Impersonation Takedown</h3>
-        <p>Detecting and removing fake profiles created in your name to protect your digital identity.</p>
-    </div>
-    <div class="card">
-        <h3>Social Media Security Audit</h3>
-        <p>Complete security hardening for your profiles to prevent future hacking attempts.</p>
-    </div>
-    <div class="card">
-        <h3>Page & Group Restoration</h3>
-        <p>Recovering admin access for hijacked business pages or large community groups.</p>
-    </div>
-    <div class="card">
-        <h3>Data Privacy Consulting</h3>
-        <p>Personalized advice on maintaining online anonymity and protecting sensitive personal data.</p>
+        <form id="waForm">
+            <input type="text" id="uName" placeholder="Your Name (Optional)" class="form-input">
+            <select id="uCategory" class="form-select" required>
+                <option value="" disabled selected>Select Case Category</option>
+                <option value="Hacked Account Recovery">Hacked Account Recovery</option>
+                <option value="Disable & Ban Appeal">Disable & Ban Appeal</option>
+                <option value="2FA & Security Bypass">2FA & Security Bypass</option>
+                <option value="Malware & Spyware Removal">Malware & Spyware Removal</option>
+                <option value="Fake Profile Takedown">Fake Profile Takedown</option>
+                <option value="Other">Other</option>
+            </select>
+            <textarea id="uDetails" rows="4" placeholder="Describe your problem..." class="form-input" style="resize: none;" required></textarea>
+            <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
+        </form>
     </div>
 
     <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
@@ -162,6 +139,17 @@
 </div>
 
 <script>
+    function sendToWA() {
+        const name = document.getElementById('uName').value || "Guest User";
+        const cat = document.getElementById('uCategory').value;
+        const msg = document.getElementById('uDetails').value;
+        if (!cat || !msg) { alert("Please fill the required fields!"); return; }
+        const phone = "8801323630741";
+        const fullMsg = `*HASAN CYBER EXPERT - NEW CASE*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Problem:* ${msg}`;
+        window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
+    }
+
+    /* Particle Background Logic */
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -171,10 +159,8 @@
 
     class Particle {
         constructor(x, y, directionX, directionY, size) {
-            this.x = x;
-            this.y = y;
-            this.directionX = directionX;
-            this.directionY = directionY;
+            this.x = x; this.y = y;
+            this.directionX = directionX; this.directionY = directionY;
             this.size = size;
         }
         draw() {
@@ -194,25 +180,25 @@
 
     function init() {
         particlesArray = [];
-        let numberOfParticles = (canvas.height * canvas.width) / 9000;
-        for (let i = 0; i < numberOfParticles * 1.5; i++) {
+        let num = (canvas.height * canvas.width) / 9000;
+        for (let i = 0; i < num * 1.5; i++) {
             let size = (Math.random() * 2) + 0.8;
             let x = (Math.random() * (innerWidth - size * 2));
             let y = (Math.random() * (innerHeight - size * 2));
-            let directionX = (Math.random() * 1.2) - 0.6; 
-            let directionY = (Math.random() * 1.2) - 0.6;
-            particlesArray.push(new Particle(x, y, directionX, directionY, size));
+            let dx = (Math.random() * 1.2) - 0.6; 
+            let dy = (Math.random() * 1.2) - 0.6;
+            particlesArray.push(new Particle(x, y, dx, dy, size));
         }
     }
 
     function connect() {
         for (let a = 0; a < particlesArray.length; a++) {
             for (let b = a; b < particlesArray.length; b++) {
-                let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
+                let dist = ((particlesArray[a].x - particlesArray[b].x) ** 2)
                 + ((particlesArray[a].y - particlesArray[b].y) ** 2);
-                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                    let opacityValue = 1 - (distance / 25000);
-                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacityValue * 0.6})`;
+                if (dist < (canvas.width / 7) * (canvas.height / 7)) {
+                    let opacity = 1 - (dist / 25000);
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacity * 0.6})`;
                     ctx.lineWidth = 1.2;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -226,15 +212,12 @@
     function animate() {
         requestAnimationFrame(animate);
         ctx.clearRect(0, 0, innerWidth, innerHeight);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-        }
+        particlesArray.forEach(p => p.update());
         connect();
     }
 
-    window.addEventListener('resize', function() {
-        canvas.width = innerWidth;
-        canvas.height = innerHeight;
+    window.addEventListener('resize', () => {
+        canvas.width = innerWidth; canvas.height = innerHeight;
         init();
     });
 
@@ -243,4 +226,4 @@
 </script>
 
 </body>
-    </html>
+            </html>
