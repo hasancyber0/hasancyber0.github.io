@@ -20,12 +20,13 @@
             position: relative;
         }
 
+        /* Animation Background - Visibility Enhanced */
         #canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.8; /* কালার আরও স্পষ্ট করার জন্য বাড়ানো হয়েছে */
         }
 
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
@@ -85,9 +86,30 @@
 
         .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; display: block; font-family: 'Orbitron', sans-serif;}
         
+        /* Submission Form Card */
         .card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid #1e293b; margin-bottom: 20px; transition: 0.3s; }
         .card:hover { border-color: #3b82f6; }
-        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; outline: none; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; }
+        
+        /* Input Styling - Smooth Placeholder like Screenshot */
+        .form-input, .form-select { 
+            width: 100%; 
+            padding: 12px; 
+            border-radius: 10px; 
+            border: 1px solid #1e293b; 
+            background: #050810; 
+            color: #fff; 
+            outline: none; 
+            margin-bottom: 12px; 
+            box-sizing: border-box; 
+            font-size: 14px; 
+        }
+
+        /* Placeholder Color Matching */
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
         .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
@@ -115,6 +137,7 @@
     <div class="card">
         <form id="waForm">
             <input type="text" id="uName" placeholder="Your Name (Optional)" class="form-input">
+            
             <select id="uCategory" class="form-select" required>
                 <option value="" disabled selected>Select Case Category</option>
                 
@@ -158,7 +181,9 @@
 
                 <option value="Other High Priority Case">Other High-Priority Security Case</option>
             </select>
+
             <textarea id="uDetails" rows="4" placeholder="Input Your Problem Here" class="form-input" style="resize: none;" required></textarea>
+            
             <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
         </form>
     </div>
@@ -179,15 +204,21 @@
         window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
     }
 
-    /* Background Particles & Connections */
+    /* Enhanced Background Particles - More Bright and Visible */
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     let particlesArray = [];
+
     class Particle {
         constructor(x, y, dx, dy, size) { this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size; }
-        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 212, 255, 0.8)'; ctx.fill(); }
+        draw() { 
+            ctx.beginPath(); 
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
+            ctx.fillStyle = 'rgba(0, 212, 255, 0.9)'; /* উজ্জ্বলতা বাড়ানো হয়েছে */
+            ctx.fill(); 
+        }
         update() {
             if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
             if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
@@ -195,18 +226,20 @@
             this.draw();
         }
     }
+
     function init() {
         particlesArray = [];
-        let n = (canvas.width * canvas.height) / 9500;
+        let n = (canvas.width * canvas.height) / 7000; /* পার্টিকেল সংখ্যা বাড়ানো হয়েছে */
         for (let i = 0; i < n; i++) {
-            let size = Math.random() * 2 + 0.8;
+            let size = Math.random() * 2.5 + 1;
             let x = Math.random() * innerWidth;
             let y = Math.random() * innerHeight;
-            let dx = Math.random() * 1.0 - 0.5;
-            let dy = Math.random() * 1.0 - 0.5;
+            let dx = Math.random() * 0.8 - 0.4;
+            let dy = Math.random() * 0.8 - 0.4;
             particlesArray.push(new Particle(x, y, dx, dy, size));
         }
     }
+
     function animate() {
         requestAnimationFrame(animate);
         ctx.clearRect(0,0,innerWidth, innerHeight);
@@ -214,8 +247,9 @@
         for(let a=0; a<particlesArray.length; a++){
             for(let b=a; b<particlesArray.length; b++){
                 let dist = ((particlesArray[a].x - particlesArray[b].x)**2) + ((particlesArray[a].y - particlesArray[b].y)**2);
-                if(dist < 10000){
-                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.15)';
+                if(dist < 12000){
+                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)'; /* কানেকশন লাইন আরও স্পষ্ট করা হয়েছে */
+                    ctx.lineWidth = 1;
                     ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                     ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
                 }
@@ -227,4 +261,4 @@
 </script>
 
 </body>
-</html>
+    </html>
