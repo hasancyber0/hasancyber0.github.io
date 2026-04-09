@@ -4,13 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HASAN CYBER EXPERT</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    
     <style>
         :root { --bg: #050810; --card: #162031; --text: #f8fafc; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 15px; overflow-x: hidden; }
-        #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
         .container { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
         
+        /* --- Shared Box Styling (Glassmorphism) --- */
         .glass-box { 
             text-align: center; 
             background: rgba(22, 32, 49, 0.5); 
@@ -21,68 +41,77 @@
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
         }
 
+        /* Shared Rainbow Text Definition */
         .rainbow-text {
             font-weight: 800; 
             text-transform: uppercase; 
             font-family: 'Orbitron', sans-serif; 
-            background: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: rainbowFlow 3s linear infinite;
+            display: block;
         }
 
-        .header { margin: 30px 0 10px 0; padding: 15px 5px; }
-        h1 { font-size: clamp(16px, 5vw, 22px); margin: 0; white-space: nowrap; letter-spacing: 1px; }
+        /* --- Header Box (Left to Right Flow) --- */
+        .header { margin: 10px 0 12px 0; padding: 15px 5px; }
+        h1 { 
+            font-size: clamp(16px, 5vw, 22px); 
+            margin: 0; 
+            white-space: nowrap; 
+            letter-spacing: 1px;
+            background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            animation: flowLR 4s linear infinite;
+        }
 
-        /* --- Bio Box Adjusted for One Line --- */
+        /* --- Bio Box (Right to Left Flow) --- */
         .bio-box { margin-bottom: 25px; padding: 10px 8px; }
         .contact-info {
-            font-size: clamp(10px, 3.2vw, 12px); /* সাইজ আরও ছোট করা হয়েছে */
+            font-size: clamp(10px, 3.2vw, 12px);
             margin: 0;
             line-height: 1;
-            letter-spacing: 0.2px; /* স্পেসিং কমানো হয়েছে যাতে এক লাইনে আটে */
-            white-space: nowrap; /* এক লাইনে রাখার জন্য */
-            font-weight: 700;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            background-image: linear-gradient(to left, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            animation: flowRL 4s linear infinite;
         }
 
-        @keyframes rainbowFlow {
+        /* Animations */
+        @keyframes flowLR {
             0% { background-position: 0% center; }
             100% { background-position: 200% center; }
         }
+        @keyframes flowRL {
+            0% { background-position: 200% center; }
+            100% { background-position: 0% center; }
+        }
         
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
-        .btn { padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; color: white; text-align: center; transition: 0.3s; font-size: 14px; }
-        .btn-wa { background: #25d366; } .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
-        .btn-fb { background: #1877f2; } .btn-tt { background: #000; border: 1px solid #333; }
-        
-        .section-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; display: block; font-family: 'Orbitron', sans-serif; }
-        
-        .card { background: var(--card); padding: 20px; border-radius: 20px; border: 1px solid #3b82f6; }
-        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; outline: none; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; }
-        
-        .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; }
+        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
+
+        .btn-wa { background: #25d366; } 
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .btn-fb { background: #1877f2; } 
+        .btn-tt { background: #000; border: 1px solid #333; }
+
+        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; display: block; font-family: 'Orbitron', sans-serif;}
+        .card { background: var(--card); padding: 20px; border-radius: 18px; margin-bottom: 12px; border: 1px solid #1e293b; transition: 0.3s; }
+        .card:hover { border-color: #3b82f6; transform: scale(1.01); }
+        .card h3 { margin: 0 0 8px; font-size: 18px; color: #fff; }
+        .card p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.6; }
     </style>
 </head>
 <body>
+
 <canvas id="canvas"></canvas>
+
 <div class="container">
-    
     <div class="header glass-box">
         <h1 class="rainbow-text">HASAN CYBER EXPERT</h1>
     </div>
-    
+
     <div class="bio-box glass-box">
-        <p class="contact-info rainbow-text">
-            
-        
-            
-
-            
-
-
-         Need Security? Contact me
-        </p>
+        <p class="contact-info rainbow-text">Need Security? Contact me</p>
     </div>
     
     <div class="btn-grid">
@@ -92,66 +121,126 @@
         <a href="https://www.tiktok.com/@bruno_your_father1" class="btn btn-tt">TikTok</a>
     </div>
 
-    <span class="section-title">CASE SUBMISSION</span>
+    <span class="section-title">Our Premium Services</span>
+
     <div class="card">
-        <form id="waForm">
-            <input type="text" id="uName" placeholder="Your Name (Optional)" class="form-input">
-            <select id="uCategory" class="form-select" required>
-                <option value="" disabled selected>Select Case Category</option>
-                <option value="TikTok Account Ban Appeal">TikTok Account Ban Appeal</option>
-                <option value="TikTok Account Recovery">TikTok Account Recovery</option>
-                <option value="Instagram Disabled ID Recovery">Instagram Disabled ID Recovery</option>
-                <option value="Facebook Page Admin Recovery">Facebook Page Admin Recovery</option>
-                <option value="Facebook Account Recovery">Facebook Account Recovery</option>
-                <option value="Number to Information (OSINT)">Number to Information (OSINT)</option>
-                <option value="2FA Bypass">2FA Bypass</option>
-                <option value="Fake Profile Takedown">Fake Profile Takedown</option>
-                <option value="Security Audit">Security Audit</option>
-                <option value="Other">Other</option>
-            </select>
-            <textarea id="uDetails" rows="4" placeholder="Describe your problem..." class="form-input" style="resize: none;" required></textarea>
-            <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
-        </form>
+        <h3>Hacked Account Recovery</h3>
+        <p>Restoring access to hacked Facebook, Instagram, and TikTok accounts using advanced forensic methods.</p>
     </div>
-    <div style="text-align: center; margin-top: 30px; font-size: 11px; color: #475569;">&copy; 2026 HASAN CYBER EXPERT | SYLHET, BD</div>
+    <div class="card">
+        <h3>Disable & Ban Appeal</h3>
+        <p>Providing professional legal appeals to unban accounts disabled for community guideline violations.</p>
+    </div>
+    <div class="card">
+        <h3>2FA & Security Bypass</h3>
+        <p>Expert assistance in bypassing 2FA locks when recovery codes or mobile numbers are lost.</p>
+    </div>
+    <div class="card">
+        <h3>Malware & Spyware Removal</h3>
+        <p>Deep scanning and cleaning devices to remove hidden trackers, spyware, and harmful malware.</p>
+    </div>
+    <div class="card">
+        <h3>Impersonation Takedown</h3>
+        <p>Detecting and removing fake profiles created in your name to protect your digital identity.</p>
+    </div>
+    <div class="card">
+        <h3>Social Media Security Audit</h3>
+        <p>Complete security hardening for your profiles to prevent future hacking attempts.</p>
+    </div>
+    <div class="card">
+        <h3>Page & Group Restoration</h3>
+        <p>Recovering admin access for hijacked business pages or large community groups.</p>
+    </div>
+    <div class="card">
+        <h3>Data Privacy Consulting</h3>
+        <p>Personalized advice on maintaining online anonymity and protecting sensitive personal data.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
+        &copy; 2026 HASAN CYBER EXPERT | SYLHET, BD
+    </div>
 </div>
 
 <script>
-    function sendToWA() {
-        const name = document.getElementById('uName').value || "Guest User";
-        const cat = document.getElementById('uCategory').value;
-        const msg = document.getElementById('uDetails').value;
-        if (!cat || !msg) { alert("Please fill the required fields!"); return; }
-        const phone = "8801323630741";
-        const fullMsg = `*HASAN CYBER EXPERT - NEW CASE*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Problem:* ${msg}`;
-        window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
-    }
-
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    let parts = [];
-    class P {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = Math.random() * 0.6 - 0.3;
-            this.vy = Math.random() * 0.6 - 0.3;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray;
+
+    class Particle {
+        constructor(x, y, directionX, directionY, size) {
+            this.x = x;
+            this.y = y;
+            this.directionX = directionX;
+            this.directionY = directionY;
+            this.size = size;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
+            ctx.fill();
         }
         update() {
-            this.x += this.vx; this.y += this.vy;
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            ctx.fillStyle = "#00d4ff"; ctx.beginPath(); ctx.arc(this.x, this.y, 1.5, 0, Math.PI*2); ctx.fill();
+            if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+            if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+            this.x += this.directionX;
+            this.y += this.directionY;
+            this.draw();
         }
     }
-    for(let i=0; i<60; i++) parts.push(new P());
-    function anim() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        parts.forEach(p => p.update());
-        requestAnimationFrame(anim);
+
+    function init() {
+        particlesArray = [];
+        let numberOfParticles = (canvas.height * canvas.width) / 9000;
+        for (let i = 0; i < numberOfParticles * 1.5; i++) {
+            let size = (Math.random() * 2) + 0.8;
+            let x = (Math.random() * (innerWidth - size * 2));
+            let y = (Math.random() * (innerHeight - size * 2));
+            let directionX = (Math.random() * 1.2) - 0.6; 
+            let directionY = (Math.random() * 1.2) - 0.6;
+            particlesArray.push(new Particle(x, y, directionX, directionY, size));
+        }
     }
-    anim();
+
+    function connect() {
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
+                + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                    let opacityValue = 1 - (distance / 25000);
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacityValue * 0.6})`;
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+        }
+        connect();
+    }
+
+    window.addEventListener('resize', function() {
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+        init();
+    });
+
+    init();
+    animate();
 </script>
+
 </body>
-                                                                           </html>
+    </html>
