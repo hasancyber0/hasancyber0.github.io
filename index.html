@@ -19,6 +19,7 @@
             overflow-x: hidden;
         }
 
+        /* Fixed Square Menu Button */
         .menu-dot {
             position: fixed;
             top: 15px;
@@ -33,74 +34,142 @@
             flex-direction: column;
             gap: 4px;
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+            transition: 0.3s;
         }
 
-        .menu-dot span { width: 20px; height: 2px; background-color: var(--accent); display: block; box-shadow: 0 0 8px var(--accent); }
+        .menu-dot span {
+            width: 20px;
+            height: 2px;
+            background-color: var(--accent);
+            display: block;
+            box-shadow: 0 0 8px var(--accent);
+        }
 
+        /* Information Overlay */
         .overlay {
-            height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; right: 0;
-            background-color: rgba(5, 10, 20, 0.98); backdrop-filter: blur(15px);
-            overflow-x: hidden; transition: 0.5s;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 0;
+            background-color: rgba(5, 10, 20, 0.98);
+            backdrop-filter: blur(15px);
+            overflow-x: hidden;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .overlay-content { position: relative; top: 10%; width: 100%; padding: 25px; box-sizing: border-box; }
-        .overlay .closebtn { position: absolute; top: 20px; right: 25px; font-size: 40px; color: #ff4d4d; text-decoration: none; }
+        .overlay-content {
+            position: relative;
+            top: 10%;
+            width: 100%;
+            padding: 25px;
+            box-sizing: border-box;
+        }
 
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 40px;
+            color: #ff4d4d;
+            text-decoration: none;
+        }
+
+        /* My Information Card with Dual Scan Light */
         .info-card {
-            position: relative; background: #0a111e; padding: 25px; border-radius: 12px;
-            max-width: 320px; margin: 0 auto; border: 1px solid rgba(0, 212, 255, 0.3);
-            overflow: hidden;
+            position: relative;
+            background: #0a111e;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 320px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            overflow: hidden; 
         }
 
-        /* Dual Scanning Light Effects */
+        /* Dual Scanning lights (Left & Right) */
         .info-card::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
             background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
-            animation: scanLeft 3s infinite linear; z-index: 1;
+            animation: scanLeft 3s infinite linear;
+            z-index: 1;
         }
+
         .info-card::after {
-            content: ''; position: absolute; top: 0; right: -100%; width: 50%; height: 100%;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 50%;
+            height: 100%;
             background: linear-gradient(270deg, transparent, rgba(255, 0, 212, 0.3), transparent);
-            animation: scanRight 3s infinite linear; animation-delay: 1.5s; z-index: 1;
+            animation: scanRight 3s infinite linear;
+            animation-delay: 1.5s;
+            z-index: 1;
         }
 
         @keyframes scanLeft { 0% { left: -100%; } 100% { left: 100%; } }
         @keyframes scanRight { 0% { right: -100%; } 100% { right: 100%; } }
 
         .info-card h2 { 
-            font-family: 'Orbitron', sans-serif; font-size: 18px; text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px;
-            position: relative; z-index: 2; margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 18px; 
+            margin-bottom: 20px; 
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            position: relative;
+            z-index: 2;
         }
 
         .info-item { 
-            margin-bottom: 12px; font-size: 16px; display: flex; justify-content: space-between; 
-            font-weight: 700; position: relative; z-index: 2;
+            margin-bottom: 12px; 
+            font-size: 16px; 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
         }
 
-        /* RGB Text Animation - Removed White/Green colors */
+        /* RGB Animation for Text Only */
         .rgb-info {
             background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: flowLR 3s linear infinite; text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowLR 3s linear infinite;
         }
 
+        /* Main Website Styles */
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .container { max-width: 480px; margin: 45px auto 0 auto; position: relative; z-index: 1; }
         .glass-box { text-align: center; background: rgba(22, 32, 49, 0.5); border-radius: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); }
         .rainbow-text { font-weight: 800; text-transform: uppercase; font-family: 'Orbitron', sans-serif; background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
-        h1 { font-size: clamp(16px, 5vw, 22px); margin: 0; background-image: linear-gradient(to right, #ff0000, #fffb00, #00ffd5, #7a00ff, #ff0000); animation: flowLR 4s linear infinite; }
+        .header { margin: 10px 0 12px 0; padding: 15px 5px; }
+        h1 { font-size: clamp(16px, 5vw, 22px); margin: 0; background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); animation: flowLR 4s linear infinite; }
+        .bio-box { margin-bottom: 25px; padding: 10px 8px; }
+        .contact-info { font-size: clamp(10px, 3.2vw, 12px); margin: 0; background-image: linear-gradient(to left, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); animation: flowRL 4s linear infinite; }
         
         @keyframes flowLR { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        @keyframes flowRL { 0% { background-position: 200% center; } 100% { background-position: 0% center; } }
         
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
-        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; color: white; text-align: center; }
-        .btn-wa { background: #25d366; } .btn-fb { background: #1877f2; }
+        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
+        .btn-wa { background: #25d366; } 
+        .btn-fb { background: #1877f2; } 
 
-        .section-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; font-family: 'Orbitron', sans-serif;}
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; font-family: 'Orbitron', sans-serif;}
         .card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid #1e293b; margin-bottom: 20px; }
-        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; margin-bottom: 12px; box-sizing: border-box; outline: none;}
-        .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; outline: none;}
+        .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -126,10 +195,14 @@
 <canvas id="canvas"></canvas>
 
 <div class="container">
-    <div class="glass-box" style="padding: 15px; margin-bottom: 15px;">
+    <div class="header glass-box">
         <h1 class="rainbow-text">HASAN CYBER EXPERT</h1>
     </div>
 
+    <div class="bio-box glass-box">
+        <p class="contact-info rainbow-text">Need Security? Contact me</p>
+    </div>
+    
     <div class="btn-grid">
         <a href="https://wa.me/8801323630741" class="btn btn-wa">WhatsApp</a>
         <a href="https://www.facebook.com/share/1MHz1Sgnyh/" class="btn btn-fb">Facebook</a>
@@ -139,29 +212,38 @@
     <div class="card">
         <form id="waForm">
             <input type="text" id="uName" placeholder="Your Name" class="form-input">
+            
             <select id="uCategory" class="form-select" required>
                 <option value="" disabled selected>Select Case Category</option>
                 <optgroup label="Account Recovery & Forensics">
-                    <option value="Hacked Facebook Recovery">Advanced Facebook Account Recovery</option>
+                    <option value="Advanced Facebook Account Recovery">Advanced Facebook Account Recovery</option>
                     <option value="Facebook Business Page Restoration">Business Page Restoration</option>
                     <option value="Instagram Forensic Recovery">Instagram Forensic ID Restoration</option>
-                    <option value="TikTok Guideline Ban Appeal">TikTok Permanent Ban Appeal</option>
-                    <option value="2FA & Security Lock Bypass">2FA & Security Lock Bypass</option>
+                    <option value="TikTok Guideline Ban Appeal">TikTok Permanent Ban Appeal (Legal)</option>
+                    <option value="2FA & Security Lock Bypass">Multi-Factor Authentication Bypass</option>
+                    <option value="Email Account Forensic Recovery">Gmail/Corporate Email Recovery</option>
                 </optgroup>
                 <optgroup label="Cyber Investigation (OSINT)">
-                    <option value="Advanced OSINT Investigation">OSINT Investigation</option>
-                    <option value="Phone Number Data Tracing">Phone Number Data Tracing</option>
-                    <option value="Cyber Bullying & Extortion">Cyber Blackmail Solution</option>
+                    <option value="Advanced OSINT Investigation">Digital Footprint & OSINT Investigation</option>
+                    <option value="Phone Number Data Tracing">Advanced Number to Data Tracing</option>
+                    <option value="Cyber Bullying & Extortion">Cyber Blackmail & Extortion Solution</option>
+                    <option value="Deep Web Data Monitoring">Deep Web Personal Data Monitoring</option>
                 </optgroup>
                 <optgroup label="Malware & Device Security">
-                    <option value="Spyware/Rat Removal">Spyware & RAT Removal</option>
-                    <option value="Device Hardening Audit">Smartphone Security Hardening</option>
+                    <option value="Spyware/Rat Removal">Advanced Spyware & RAT Removal</option>
+                    <option value="Device Hardening Audit">Smartphone & PC Security Hardening</option>
+                    <option value="Network Vulnerability Scan">Home/Office WiFi Security Patching</option>
                 </optgroup>
-                <option value="Other High Priority Case">Other High-Priority Case</option>
+                <option value="Other High Priority Case">Other High-Priority Security Case</option>
             </select>
+
             <textarea id="uDetails" rows="4" placeholder="Describe Your Problem" class="form-input" style="resize: none;" required></textarea>
             <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
         </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
+        &copy; 2026 HASAN CYBER EXPERT | SYLHET, BD
     </div>
 </div>
 
@@ -170,39 +252,73 @@
     function closeNav() { document.getElementById("myNav").style.width = "0%"; }
 
     function sendToWA() {
-        const name = document.getElementById('uName').value || "Guest";
+        const name = document.getElementById('uName').value || "Guest User";
         const cat = document.getElementById('uCategory').value;
         const msg = document.getElementById('uDetails').value;
         if (!cat || !msg) { alert("সবগুলো তথ্য প্রদান করুন!"); return; }
-        window.location.href = `https://wa.me/8801323630741?text=*CASE REPORT*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Details:* ${msg}`;
+        const phone = "8801323630741";
+        const fullMsg = `*CASE REPORT*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Details:* ${msg}`;
+        window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
     }
 
+    /* Particles Canvas Animation - Full Version restored */
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     let particlesArray = [];
 
     class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-            this.dx = (Math.random() * 0.6 - 0.3); this.dy = (Math.random() * 0.6 - 0.3);
-            this.size = Math.random() * 2 + 1;
+        constructor(x, y, dx, dy, size) { 
+            this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size; 
+        }
+        draw() { 
+            ctx.beginPath(); 
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
+            ctx.fillStyle = '#00d4ff';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#00d4ff';
+            ctx.fill(); 
+            ctx.shadowBlur = 0;
         }
         update() {
             if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
             if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
             this.x += this.dx; this.y += this.dy;
-            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = '#00d4ff'; ctx.fill();
+            this.draw();
         }
     }
 
-    function init() { for (let i = 0; i < 70; i++) particlesArray.push(new Particle()); }
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particlesArray.forEach(p => p.update());
-        requestAnimationFrame(animate);
+    function init() {
+        particlesArray = [];
+        let n = (canvas.width * canvas.height) / 8000; 
+        for (let i = 0; i < n; i++) {
+            let size = Math.random() * 2 + 1;
+            let x = Math.random() * innerWidth;
+            let y = Math.random() * innerHeight;
+            let dx = (Math.random() * 0.8 - 0.4); 
+            let dy = (Math.random() * 0.8 - 0.4);
+            particlesArray.push(new Particle(x, y, dx, dy, size));
+        }
     }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0,0,innerWidth, innerHeight);
+        particlesArray.forEach(p => p.update());
+        for(let a=0; a<particlesArray.length; a++){
+            for(let b=a; b<particlesArray.length; b++){
+                let dist = ((particlesArray[a].x - particlesArray[b].x)**2) + ((particlesArray[a].y - particlesArray[b].y)**2);
+                if(dist < 12000){
+                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
+                }
+            }
+        }
+    }
+    window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
     init(); animate();
 </script>
 
