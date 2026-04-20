@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Square Menu Button at the top right */
+        /* Fixed Square Menu Button */
         .menu-dot {
             position: fixed;
             top: 15px;
@@ -37,8 +37,6 @@
             transition: 0.3s;
         }
 
-        .menu-dot:hover { background: rgba(0, 212, 255, 0.1); }
-
         .menu-dot span {
             width: 20px;
             height: 2px;
@@ -47,7 +45,7 @@
             box-shadow: 0 0 5px var(--accent);
         }
 
-        /* Overlay Drawer */
+        /* Information Overlay */
         .overlay {
             height: 100%;
             width: 0;
@@ -64,7 +62,7 @@
 
         .overlay-content {
             position: relative;
-            top: 15%;
+            top: 10%;
             width: 100%;
             padding: 25px;
             box-sizing: border-box;
@@ -84,9 +82,8 @@
             border: 1px solid rgba(0, 212, 255, 0.3);
             padding: 25px;
             border-radius: 8px;
-            max-width: 300px;
+            max-width: 320px;
             margin: 0 auto;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
         .info-card h2 { 
@@ -103,15 +100,16 @@
         .info-label { color: rgba(255, 255, 255, 0.5); }
         .info-value { color: #fff; font-weight: 700; }
 
-        /* Background and Main Content Styles */
+        /* Main Website Styles */
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.8; }
-        .container { max-width: 480px; margin: 40px auto 0 auto; position: relative; z-index: 1; }
+        .container { max-width: 480px; margin: 45px auto 0 auto; position: relative; z-index: 1; }
         .glass-box { text-align: center; background: rgba(22, 32, 49, 0.5); border-radius: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); }
         .rainbow-text { font-weight: 800; text-transform: uppercase; font-family: 'Orbitron', sans-serif; background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
         .header { margin: 10px 0 12px 0; padding: 15px 5px; }
         h1 { font-size: clamp(16px, 5vw, 22px); margin: 0; background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); animation: flowLR 4s linear infinite; }
         .bio-box { margin-bottom: 25px; padding: 10px 8px; }
         .contact-info { font-size: clamp(10px, 3.2vw, 12px); margin: 0; background-image: linear-gradient(to left, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); animation: flowRL 4s linear infinite; }
+        
         @keyframes flowLR { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
         @keyframes flowRL { 0% { background-position: 200% center; } 100% { background-position: 0% center; } }
         
@@ -122,7 +120,8 @@
 
         .section-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; font-family: 'Orbitron', sans-serif;}
         .card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid #1e293b; margin-bottom: 20px; }
-        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; margin-bottom: 12px; box-sizing: border-box; }
+        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; outline: none;}
+        .form-select optgroup { background: #162031; color: #00d4ff; }
         .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
@@ -167,16 +166,60 @@
     <span class="section-title">CASE SUBMISSION</span>
     <div class="card">
         <form id="waForm">
-            <input type="text" id="uName" placeholder="Your Name" class="form-input">
+            <input type="text" id="uName" placeholder="Your Name (Optional)" class="form-input">
+            
             <select id="uCategory" class="form-select" required>
-                <option value="" disabled selected>Select Category</option>
-                <option value="Hacked Account">Account Recovery</option>
-                <option value="OSINT">Cyber Investigation</option>
-                <option value="Security Audit">Device Security</option>
+                <option value="" disabled selected>Select Case Category</option>
+                
+                <optgroup label="Account Recovery & Forensics">
+                    <option value="Hacked Facebook Recovery">Advanced Facebook Account Recovery</option>
+                    <option value="Facebook Business Page Restoration">Business Page Restoration & Admin Recovery</option>
+                    <option value="Instagram Forensic Recovery">Instagram Forensic ID Restoration</option>
+                    <option value="TikTok Guideline Ban Appeal">TikTok Permanent Ban Appeal (Legal)</option>
+                    <option value="2FA & Security Lock Bypass">Multi-Factor Authentication (2FA) Bypass</option>
+                    <option value="Email Account Forensic Recovery">Gmail/Corporate Email Recovery</option>
+                </optgroup>
+
+                <optgroup label="Cyber Investigation (OSINT)">
+                    <option value="Advanced OSINT Investigation">Digital Footprint & OSINT Investigation</option>
+                    <option value="Phone Number Data Tracing">Advanced Number to Data Tracing</option>
+                    <option value="Cyber Bullying & Extortion">Cyber Blackmail & Extortion Solution</option>
+                    <option value="Deep Web Data Monitoring">Deep Web Personal Data Monitoring</option>
+                    <option value="IP & Location Tracking">Authorized IP Tracking & Log Analysis</option>
+                </optgroup>
+
+                <optgroup label="Malware & Device Security">
+                    <option value="Spyware/Rat Removal">Advanced Spyware & RAT Removal</option>
+                    <option value="Remote Access Block">Unauthorized Remote Access Detection</option>
+                    <option value="Device Hardening Audit">Smartphone & PC Security Hardening</option>
+                    <option value="Malicious Link Analysis">Phishing & Malicious Link Forensics</option>
+                    <option value="Network Vulnerability Scan">Home/Office WiFi Security Patching</option>
+                </optgroup>
+
+                <optgroup label="Corporate & Identity Protection">
+                    <option value="Impersonation & Fake Profile Takedown">Impersonation Takedown (Identity Theft)</option>
+                    <option value="Digital Branding Protection">Online Brand & Reputation Protection</option>
+                    <option value="Data Breach Prevention">Personal Data Breach Prevention Audit</option>
+                    <option value="Doxing Defense Services">Doxing & Leak Defense Consulting</option>
+                    <option value="Sensitive Content Removal">Non-Consensual Content Takedown</option>
+                </optgroup>
+
+                <optgroup label="Premium Gaming Security">
+                    <option value="Gaming Account Forensic Recovery">High-Value Gaming Account Recovery</option>
+                    <option value="In-Game Scammer Tracking">Game Asset Scammer Investigation</option>
+                </optgroup>
+
+                <option value="Other High Priority Case">Other High-Priority Security Case</option>
             </select>
+
             <textarea id="uDetails" rows="4" placeholder="Describe Your Problem" class="form-input" style="resize: none;" required></textarea>
+            
             <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
         </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
+        &copy; 2026 HASAN CYBER EXPERT | SYLHET, BD
     </div>
 </div>
 
@@ -188,13 +231,12 @@
         const name = document.getElementById('uName').value || "Guest User";
         const cat = document.getElementById('uCategory').value;
         const msg = document.getElementById('uDetails').value;
-        if (!cat || !msg) { alert("Fill all details!"); return; }
+        if (!cat || !msg) { alert("সবগুলো তথ্য সঠিকভাবে প্রদান করুন!"); return; }
         const phone = "8801323630741";
         const fullMsg = `*CASE REPORT*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Details:* ${msg}`;
         window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
     }
 
-    // Matrix Background Animation
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
