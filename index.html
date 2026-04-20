@@ -26,14 +26,14 @@
             right: 15px;
             z-index: 1000;
             cursor: pointer;
-            background: rgba(22, 32, 49, 0.85);
+            background: rgba(22, 32, 49, 0.9);
             padding: 10px;
             border: 1px solid var(--accent);
             border-radius: 4px;
             display: flex;
             flex-direction: column;
             gap: 4px;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
             transition: 0.3s;
         }
 
@@ -42,10 +42,10 @@
             height: 2px;
             background-color: var(--accent);
             display: block;
-            box-shadow: 0 0 5px var(--accent);
+            box-shadow: 0 0 8px var(--accent);
         }
 
-        /* Information Overlay */
+        /* Information Overlay (Side Blur Removed) */
         .overlay {
             height: 100%;
             width: 0;
@@ -57,7 +57,7 @@
             backdrop-filter: blur(15px);
             overflow-x: hidden;
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 2px solid var(--accent);
+            border-left: none; /* Removed the side blur/line */
         }
 
         .overlay-content {
@@ -78,12 +78,13 @@
         }
 
         .info-card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(0, 212, 255, 0.3);
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid var(--accent);
             padding: 25px;
-            border-radius: 8px;
+            border-radius: 12px;
             max-width: 320px;
             margin: 0 auto;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
         }
 
         .info-card h2 { 
@@ -92,16 +93,16 @@
             font-size: 18px; 
             margin-bottom: 20px; 
             text-align: center;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
             padding-bottom: 10px;
         }
 
         .info-item { margin-bottom: 12px; font-size: 15px; display: flex; justify-content: space-between; }
-        .info-label { color: rgba(255, 255, 255, 0.5); }
-        .info-value { color: #fff; font-weight: 700; }
+        .info-label { color: rgba(255, 255, 255, 0.6); }
+        .info-value { color: #fff; font-weight: 700; text-shadow: 0 0 5px var(--accent); }
 
         /* Main Website Styles */
-        #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.8; }
+        #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 1; }
         .container { max-width: 480px; margin: 45px auto 0 auto; position: relative; z-index: 1; }
         .glass-box { text-align: center; background: rgba(22, 32, 49, 0.5); border-radius: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); }
         .rainbow-text { font-weight: 800; text-transform: uppercase; font-family: 'Orbitron', sans-serif; background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
@@ -115,14 +116,14 @@
         
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
         .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
-        .btn-wa { background: #25d366; } 
-        .btn-fb { background: #1877f2; } 
+        .btn-wa { background: #25d366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); } 
+        .btn-fb { background: #1877f2; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3); } 
 
         .section-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; font-family: 'Orbitron', sans-serif;}
         .card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid #1e293b; margin-bottom: 20px; }
         .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; outline: none;}
         .form-select optgroup { background: #162031; color: #00d4ff; }
-        .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; }
+        .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
     </style>
 </head>
 <body>
@@ -237,6 +238,7 @@
         window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
     }
 
+    // Advanced Fast Particle Background
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -244,28 +246,41 @@
     let particlesArray = [];
 
     class Particle {
-        constructor(x, y, dx, dy, size) { this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size; }
+        constructor(x, y, dx, dy, size) { 
+            this.x = x; 
+            this.y = y; 
+            this.dx = dx; 
+            this.dy = dy; 
+            this.size = size; 
+        }
         draw() { 
-            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
-            ctx.fillStyle = 'rgba(0, 212, 255, 0.8)'; ctx.fill(); 
+            ctx.beginPath(); 
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
+            ctx.fillStyle = 'rgba(0, 212, 255, 1)'; // More Vivid Color
+            ctx.shadowBlur = 15; // Increased Glow
+            ctx.shadowColor = '#00d4ff';
+            ctx.fill(); 
+            ctx.shadowBlur = 0; // Reset for performance
         }
         update() {
             if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
             if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
-            this.x += this.dx; this.y += this.dy;
+            this.x += this.dx; 
+            this.y += this.dy;
             this.draw();
         }
     }
 
     function init() {
         particlesArray = [];
-        let n = (canvas.width * canvas.height) / 8000; 
+        let n = (canvas.width * canvas.height) / 7500; 
         for (let i = 0; i < n; i++) {
-            let size = Math.random() * 2 + 1;
+            let size = Math.random() * 2.5 + 1.5;
             let x = Math.random() * innerWidth;
             let y = Math.random() * innerHeight;
-            let dx = Math.random() * 0.6 - 0.3;
-            let dy = Math.random() * 0.6 - 0.3;
+            // Increased speed (dx, dy)
+            let dx = (Math.random() * 2 - 1) * 1.5; 
+            let dy = (Math.random() * 2 - 1) * 1.5;
             particlesArray.push(new Particle(x, y, dx, dy, size));
         }
     }
@@ -277,11 +292,13 @@
         for(let a=0; a<particlesArray.length; a++){
             for(let b=a; b<particlesArray.length; b++){
                 let dist = ((particlesArray[a].x - particlesArray[b].x)**2) + ((particlesArray[a].y - particlesArray[b].y)**2);
-                if(dist < 12000){
-                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.2)'; 
-                    ctx.lineWidth = 1;
-                    ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
+                if(dist < 15000){ // Connection range
+                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.4)'; // Brighter lines
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath(); 
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y); 
+                    ctx.stroke();
                 }
             }
         }
