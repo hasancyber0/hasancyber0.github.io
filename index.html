@@ -76,7 +76,7 @@
             text-decoration: none;
         }
 
-        /* RGB Animated Profile Card */
+        /* My Information Card with Dual Scan Light */
         .info-card {
             position: relative;
             background: #0a111e;
@@ -85,8 +85,38 @@
             max-width: 320px;
             margin: 0 auto;
             border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            overflow: hidden;
         }
+
+        /* Scanning Light Left to Right */
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            animation: scanLeft 3s infinite linear;
+            z-index: 2;
+        }
+
+        /* Scanning Light Right to Left */
+        .info-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(270deg, transparent, rgba(255, 0, 212, 0.3), transparent);
+            animation: scanRight 3s infinite linear;
+            animation-delay: 1.5s;
+            z-index: 2;
+        }
+
+        @keyframes scanLeft { 0% { left: -100%; } 100% { left: 100%; } }
+        @keyframes scanRight { 0% { right: -100%; } 100% { right: 100%; } }
 
         .info-card h2 { 
             font-family: 'Orbitron', sans-serif; 
@@ -98,25 +128,9 @@
             padding-bottom: 10px;
         }
 
-        .info-item { 
-            margin-bottom: 12px; 
-            font-size: 16px; 
-            display: flex; 
-            justify-content: space-between; 
-            font-weight: 700;
-        }
-
+        .info-item { margin-bottom: 12px; font-size: 16px; display: flex; justify-content: space-between; position: relative; z-index: 5;}
         .info-label { color: rgba(255, 255, 255, 0.6); }
-
-        /* RGB Text Animation for Information */
-        .rgb-info {
-            background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: flowLR 3s linear infinite;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-        }
+        .info-value { color: #fff; font-weight: 700; text-shadow: 0 0 5px var(--accent); }
 
         /* Main Website Styles */
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 1; }
@@ -154,12 +168,12 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
         <div class="info-card">
-            <h2 class="rgb-info">USER PROFILE</h2>
-            <div class="info-item"><span class="info-label">Name:</span> <span class="rgb-info">Hasan</span></div>
-            <div class="info-item"><span class="info-label">Address:</span> <span class="rgb-info">Sylhet, BD</span></div>
-            <div class="info-item"><span class="info-label">Class:</span> <span class="rgb-info">SSC 27</span></div>
-            <div class="info-item"><span class="info-label">Age:</span> <span class="rgb-info">16+</span></div>
-            <div class="info-item"><span class="info-label">Status:</span> <span class="rgb-info">Single</span></div>
+            <h2>MY INFORMATION</h2>
+            <div class="info-item"><span class="info-label">Name:</span> <span class="info-value">Hasan</span></div>
+            <div class="info-item"><span class="info-label">Address:</span> <span class="info-value">Sylhet, BD</span></div>
+            <div class="info-item"><span class="info-label">Class:</span> <span class="info-value">SSC 27</span></div>
+            <div class="info-item"><span class="info-label">Age:</span> <span class="info-value">16+</span></div>
+            <div class="info-item"><span class="info-label">Status:</span> <span class="info-value" style="color: #48ff00;">Single</span></div>
         </div>
     </div>
 </div>
@@ -183,47 +197,21 @@
     <span class="section-title">CASE SUBMISSION</span>
     <div class="card">
         <form id="waForm">
-            <input type="text" id="uName" placeholder="Your Name (Optional)" class="form-input">
-            
+            <input type="text" id="uName" placeholder="Your Name" class="form-input">
             <select id="uCategory" class="form-select" required>
                 <option value="" disabled selected>Select Case Category</option>
-                <optgroup label="Account Recovery & Forensics">
-                    <option value="Hacked Facebook Recovery">Advanced Facebook Account Recovery</option>
-                    <option value="Facebook Business Page Restoration">Business Page Restoration & Admin Recovery</option>
-                    <option value="Instagram Forensic Recovery">Instagram Forensic ID Restoration</option>
-                    <option value="TikTok Guideline Ban Appeal">TikTok Permanent Ban Appeal (Legal)</option>
-                    <option value="2FA & Security Lock Bypass">Multi-Factor Authentication (2FA) Bypass</option>
-                    <option value="Email Account Forensic Recovery">Gmail/Corporate Email Recovery</option>
+                <optgroup label="Account Recovery">
+                    <option value="Facebook Recovery">Facebook Recovery</option>
+                    <option value="Instagram Recovery">Instagram Recovery</option>
+                    <option value="TikTok Recovery">TikTok Recovery</option>
                 </optgroup>
-                <optgroup label="Cyber Investigation (OSINT)">
-                    <option value="Advanced OSINT Investigation">Digital Footprint & OSINT Investigation</option>
-                    <option value="Phone Number Data Tracing">Advanced Number to Data Tracing</option>
-                    <option value="Cyber Bullying & Extortion">Cyber Blackmail & Extortion Solution</option>
-                    <option value="Deep Web Data Monitoring">Deep Web Personal Data Monitoring</option>
-                    <option value="IP & Location Tracking">Authorized IP Tracking & Log Analysis</option>
+                <optgroup label="Cyber Investigation">
+                    <option value="OSINT">OSINT Investigation</option>
+                    <option value="Number Trace">Number Trace</option>
                 </optgroup>
-                <optgroup label="Malware & Device Security">
-                    <option value="Spyware/Rat Removal">Advanced Spyware & RAT Removal</option>
-                    <option value="Remote Access Block">Unauthorized Remote Access Detection</option>
-                    <option value="Device Hardening Audit">Smartphone & PC Security Hardening</option>
-                    <option value="Malicious Link Analysis">Phishing & Malicious Link Forensics</option>
-                    <option value="Network Vulnerability Scan">Home/Office WiFi Security Patching</option>
-                </optgroup>
-                <optgroup label="Corporate & Identity Protection">
-                    <option value="Impersonation & Fake Profile Takedown">Impersonation Takedown (Identity Theft)</option>
-                    <option value="Digital Branding Protection">Online Brand & Reputation Protection</option>
-                    <option value="Data Breach Prevention">Personal Data Breach Prevention Audit</option>
-                    <option value="Doxing Defense Services">Doxing & Leak Defense Consulting</option>
-                    <option value="Sensitive Content Removal">Non-Consensual Content Takedown</option>
-                </optgroup>
-                <optgroup label="Premium Gaming Security">
-                    <option value="Gaming Account Forensic Recovery">High-Value Gaming Account Recovery</option>
-                    <option value="In-Game Scammer Tracking">Game Asset Scammer Investigation</option>
-                </optgroup>
-                <option value="Other High Priority Case">Other High-Priority Security Case</option>
+                <option value="Other">Other Security Case</option>
             </select>
-
-            <textarea id="uDetails" rows="4" placeholder="Describe Your Problem" class="form-input" style="resize: none;" required></textarea>
+            <textarea id="uDetails" rows="4" placeholder="Describe Problem" class="form-input" style="resize: none;" required></textarea>
             <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
         </form>
     </div>
