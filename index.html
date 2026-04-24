@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HASAN CYBER EXPERT</title>
     
+    <title>Hsn.me | Hasan Cyber Expert</title>
+    <meta property="og:site_name" content="Hsn.me" />
+    <meta name="description" content="Hasan Cyber Expert - Cyber Security Solutions and Case Submission">
+
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org",
+      "@type" : "WebSite",
+      "name" : "Hsn.me",
+      "url" : "https://yourusername.github.io/your-repo-name/" 
+    }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
     
     <style>
@@ -89,7 +100,6 @@
             overflow: hidden; 
         }
 
-        /* Dual Scanning lights (Left & Right) */
         .info-card::before {
             content: '';
             position: absolute;
@@ -139,7 +149,6 @@
             z-index: 2;
         }
 
-        /* RGB Animation for Text Only */
         .rgb-info {
             background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
             background-size: 200% auto;
@@ -148,7 +157,6 @@
             animation: flowLR 3s linear infinite;
         }
 
-        /* Main Website Styles */
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .container { max-width: 480px; margin: 45px auto 0 auto; position: relative; z-index: 1; }
         .glass-box { text-align: center; background: rgba(22, 32, 49, 0.5); border-radius: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); }
@@ -275,7 +283,6 @@
         window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
     }
 
-    /* Particles Canvas Animation - Full Version restored */
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
