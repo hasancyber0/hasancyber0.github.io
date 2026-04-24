@@ -13,9 +13,10 @@
       "@context" : "https://schema.org",
       "@type" : "WebSite",
       "name" : "Hsn.me",
-      "url" : "https://yourusername.github.io/your-repo-name/" 
+      "url" : "https://hasancyber0.github.io/"
     }
     </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
     
     <style>
@@ -30,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Square Menu Button */
         .menu-dot {
             position: fixed;
             top: 15px;
@@ -56,7 +56,6 @@
             box-shadow: 0 0 8px var(--accent);
         }
 
-        /* Information Overlay */
         .overlay {
             height: 100%;
             width: 0;
@@ -87,7 +86,6 @@
             text-decoration: none;
         }
 
-        /* My Information Card with Dual Scan Light */
         .info-card {
             position: relative;
             background: #0a111e;
@@ -223,40 +221,11 @@
             
             <select id="uCategory" class="form-select" required>
                 <option value="" disabled selected>Select Case Category</option>
-                <optgroup label="Account Recovery & Forensics">
-                    <option value="Advanced Facebook Account Recovery">Advanced Facebook Account Recovery</option>
-                    <option value="Facebook Business Page Restoration">Business Page Restoration</option>
-                    <option value="Instagram Forensic Recovery">Instagram Forensic ID Restoration</option>
-                    <option value="TikTok Guideline Ban Appeal">TikTok Permanent Ban Appeal (Legal)</option>
-                    <option value="2FA & Security Lock Bypass">Multi-Factor Authentication Bypass</option>
-                    <option value="Email Account Forensic Recovery">Gmail/Corporate Email Recovery</option>
-                    <option value="Encrypted Account Forensics">Encrypted Account Forensics</option>
-                </optgroup>
-                <optgroup label="Advanced OSINT & Tracing">
-                    <option value="Advanced OSINT Investigation">Full Digital Footprint Analysis</option>
-                    <option value="Phone Number Data Tracing">Advanced Number to Data Tracing</option>
-                    <option value="Live IP & Location Tracking">Authorized IP/Location Tracking</option>
-                    <option value="Deep Web Data Monitoring">Deep Web Personal Data Monitoring</option>
-                    <option value="Photo/Video Metadata Forensics">Image/Video Metadata Analysis</option>
-                </optgroup>
-                <optgroup label="Protection & Takedown">
-                    <option value="Cyber Blackmail Defense">Cyber Blackmail & Extortion Solution</option>
-                    <option value="Fake ID/Impersonation Takedown">Fake Identity Profile Takedown</option>
-                    <option value="Non-Consensual Content Removal">Sensitive Content Removal</option>
-                    <option value="Doxing & Leak Defense">Anti-Doxing & Leak Defense</option>
-                    <option value="Online Reputation Cleaning">Digital Reputation Management</option>
-                </optgroup>
-                <optgroup label="Malware & Network Security">
-                    <option value="Spyware/Rat Removal">Advanced Spyware & RAT Removal</option>
-                    <option value="Device Hardening Audit">Smartphone & PC Security Hardening</option>
-                    <option value="Network Vulnerability Scan">Home/Office WiFi Security Patching</option>
-                    <option value="Ransomware Consultation">Ransomware Data Protection</option>
-                </optgroup>
-                <optgroup label="Gaming & Premium Services">
-                    <option value="High-Value Gaming ID Recovery">Premium Gaming Account Recovery</option>
-                    <option value="Game Scammer Investigation">Game Asset Scammer Investigation</option>
-                </optgroup>
-                <option value="Other High Priority Case">Other High-Priority Security Case</option>
+                <option value="Advanced Facebook Account Recovery">Facebook Recovery</option>
+                <option value="Advanced OSINT Investigation">OSINT Investigation</option>
+                <option value="Cyber Blackmail Defense">Blackmail Defense</option>
+                <option value="Device Hardening Audit">Device Security</option>
+                <option value="Other High Priority Case">Other Cases</option>
             </select>
 
             <textarea id="uDetails" rows="4" placeholder="Describe Your Problem" class="form-input" style="resize: none;" required></textarea>
@@ -297,10 +266,7 @@
             ctx.beginPath(); 
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
             ctx.fillStyle = '#00d4ff';
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = '#00d4ff';
             ctx.fill(); 
-            ctx.shadowBlur = 0;
         }
         update() {
             if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
