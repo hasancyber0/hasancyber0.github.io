@@ -3,182 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Video & Story Downloader</title>
+    
+    <title>HasanCyber0 | Cyber Security Expert</title>
+    <meta property="og:site_name" content="HasanCyber0" />
+    <meta name="description" content="Hasan Cyber Expert - Advanced Cyber Security Solutions, Account Recovery, and OSINT Investigation.">
+
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org",
+      "@type" : "WebSite",
+      "name" : "HasanCyber0",
+      "url" : "https://hasancyber0.github.io/"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    
     <style>
-        :root { 
-            --primary: #6e8efb; 
-            --secondary: #a777e3; 
-        }
-
-        /* Animated Background */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            color: #333; 
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px);
-            padding: 40px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
-            width: 90%; 
-            max-width: 450px; 
-            text-align: center; 
-        }
-
-        h2 { margin-top: 0; color: #444; font-size: 26px; }
-        p { font-size: 14px; color: #666; margin-bottom: 20px; }
-
-        .input-box { margin: 25px 0; }
-        input { 
-            width: 100%; 
-            padding: 15px; 
-            border: 2px solid #ddd; 
-            border-radius: 12px; 
-            font-size: 16px; 
-            transition: 0.3s; 
-            box-sizing: border-box; 
-        }
-        input:focus { border-color: var(--primary); outline: none; }
-
-        button { 
-            width: 100%; 
-            padding: 15px; 
-            background: linear-gradient(to right, var(--primary), var(--secondary)); 
-            color: white; 
-            border: none; 
-            border-radius: 12px; 
-            font-size: 18px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s; 
-        }
-        button:disabled { background: #ccc; cursor: not-allowed; }
-
-        #result { 
-            margin-top: 25px; 
-            padding: 15px; 
-            border-radius: 12px; 
-            display: none; 
-            background: #fff; 
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
-        }
-
-        .loader { 
-            border: 4px solid #f3f3f3; 
-            border-top: 4px solid var(--primary); 
-            border-radius: 50%; 
-            width: 35px; 
-            height: 35px; 
-            animation: spin 1s linear infinite; 
-            display: none; 
-            margin: 20px auto; 
-        }
+        :root { --bg: #050810; --card: #162031; --text: #f8fafc; --accent: #00d4ff; }
         
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .download-link {
-            text-decoration: none; 
-            color: white; 
-            background: #28a745; 
-            padding: 12px 25px; 
-            border-radius: 8px; 
-            display: inline-block;
-            font-weight: bold;
-            margin-top: 10px;
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            overflow-x: hidden;
         }
+
+        /* Menu Button */
+        .menu-dot {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            cursor: pointer;
+            background: rgba(22, 32, 49, 0.9);
+            padding: 10px;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+            transition: 0.3s;
+        }
+
+        .menu-dot span {
+            width: 20px;
+            height: 2px;
+            background-color: var(--accent);
+            display: block;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        /* Overlay Navigation */
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 0;
+            background-color: rgba(5, 10, 20, 0.98);
+            backdrop-filter: blur(15px);
+            overflow-x: hidden;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 10%;
+            width: 100%;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 40px;
+            color: #ff4d4d;
+            text-decoration: none;
+        }
+
+        /* Info Card Animation */
+        .info-card {
+            position: relative;
+            background: #0a111e;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 320px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            overflow: hidden; 
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            animation: scanLeft 3s infinite linear;
+            z-index: 1;
+        }
+
+        .info-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(270deg, transparent, rgba(255, 0, 212, 0.3), transparent);
+            animation: scanRight 3s infinite linear;
+            animation-delay: 1.5s;
+            z-index: 1;
+        }
+
+        @keyframes scanLeft { 0% { left: -100%; } 100% { left: 100%; } }
+        @keyframes scanRight { 0% { right: -100%; } 100% { right: 100%; } }
+
+        .info-card h2 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 18px; 
+            margin-bottom: 20px; 
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-item { 
+            margin-bottom: 12px; 
+            font-size: 16px; 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rgb-info {
+            background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowLR 3s linear infinite;
+        }
+
+        /* Main Elements */
+        #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .container { max-width: 480px; margin: 45px auto 0 auto; position: relative; z-index: 1; }
+        .glass-box { text-align: center; background: rgba(22, 32, 49, 0.5); border-radius: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(0, 212, 255, 0.3); }
+        .rainbow-text { font-weight: 800; text-transform: uppercase; font-family: 'Orbitron', sans-serif; background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+        .header { margin: 10px 0 12px 0; padding: 15px 5px; }
+        h1 { font-size: clamp(16px, 5vw, 22px); margin: 0; background-image: linear-gradient(to right, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); animation: flowLR 4s linear infinite; }
+        .bio-box { margin-bottom: 25px; padding: 10px 8px; }
+        .contact-info { font-size: clamp(10px, 3.2vw, 12px); margin: 0; background-image: linear-gradient(to left, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); animation: flowRL 4s linear infinite; }
+        
+        @keyframes flowLR { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        @keyframes flowRL { 0% { background-position: 200% center; } 100% { background-position: 0% center; } }
+        
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
+        .btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; color: white; text-align: center; transition: 0.3s; }
+        .btn-wa { background: #25d366; } 
+        .btn-fb { background: #1877f2; } 
+
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 5px solid #3b82f6; padding-left: 12px; font-family: 'Orbitron', sans-serif;}
+        .card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid #1e293b; margin-bottom: 20px; }
+        .form-input, .form-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #1e293b; background: #050810; color: #fff; margin-bottom: 12px; box-sizing: border-box; font-size: 14px; outline: none;}
+        .submit-btn { width: 100%; padding: 16px; border-radius: 10px; border: none; background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: white; font-weight: 800; font-size: 15px; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
+<div class="menu-dot" onclick="openNav()">
+    <span></span><span></span><span></span>
+</div>
+
+<div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+        <div class="info-card">
+            <h2 class="rgb-info">MY INFORMATION</h2>
+            <div class="info-item"><span class="rgb-info">Name:</span> <span class="rgb-info">Rahim Hasan</span></div>
+            <div class="info-item"><span class="rgb-info">Address:</span> <span class="rgb-info">Sylhet, BD</span></div>
+            <div class="info-item"><span class="rgb-info">Class:</span> <span class="rgb-info">SSC 27</span></div>
+            <div class="info-item"><span class="rgb-info">Age:</span> <span class="rgb-info">16+</span></div>
+            <div class="info-item"><span class="rgb-info">Status:</span> <span class="rgb-info">Single</span></div>
+        </div>
+    </div>
+</div>
+
+<canvas id="canvas"></canvas>
+
 <div class="container">
-    <h2>Story & Video Downloader</h2>
-    <p>TikTok, Instagram, Facebook & CapCut</p>
-    
-    <div class="input-box">
-        <input type="text" id="videoUrl" placeholder="Paste link here...">
+    <div class="header glass-box">
+        <h1 class="rainbow-text">HASAN CYBER EXPERT</h1>
+    </div>
+
+    <div class="bio-box glass-box">
+        <p class="contact-info rainbow-text">Need Security? Contact me</p>
     </div>
     
-    <button id="dlBtn" onclick="handleDownload()">Get Download Link</button>
-    
-    <div class="loader" id="loader"></div>
-    <div id="result"></div>
+    <div class="btn-grid">
+        <a href="https://wa.me/8801323630741" class="btn btn-wa">WhatsApp</a>
+        <a href="https://www.facebook.com/share/1MHz1Sgnyh/" class="btn btn-fb">Facebook</a>
+    </div>
+
+    <span class="section-title">CASE SUBMISSION</span>
+    <div class="card">
+        <form id="waForm">
+            <input type="text" id="uName" placeholder="Your Name (optional)" class="form-input">
+            
+            <select id="uCategory" class="form-select" required>
+                <option value="" disabled selected>Select Case Category</option>
+                <option value="Advanced Facebook Account Recovery">Facebook Recovery</option>
+                <option value="Advanced OSINT Investigation">OSINT Investigation</option>
+                <option value="Cyber Blackmail Defense">Blackmail Defense</option>
+                <option value="Device Hardening Audit">Device Security</option>
+                <option value="Other High Priority Case">Other Cases</option>
+            </select>
+
+            <textarea id="uDetails" rows="4" placeholder="Describe Your Problem" class="form-input" style="resize: none;" required></textarea>
+            <button type="button" onclick="sendToWA()" class="submit-btn">SUBMIT TO WHATSAPP</button>
+        </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #475569;">
+        &copy; 2026 HASANCYB0 | SYLHET, BD
+    </div>
 </div>
 
 <script>
-    async function handleDownload() {
-        const urlInput = document.getElementById('videoUrl').value.trim();
-        const resultDiv = document.getElementById('result');
-        const loader = document.getElementById('loader');
-        const btn = document.getElementById('dlBtn');
+    function openNav() { document.getElementById("myNav").style.width = "100%"; }
+    function closeNav() { document.getElementById("myNav").style.width = "0%"; }
 
-        if (!urlInput) {
-            alert("Please paste a link first!");
-            return;
+    function sendToWA() {
+        const name = document.getElementById('uName').value || "Guest User";
+        const cat = document.getElementById('uCategory').value;
+        const msg = document.getElementById('uDetails').value;
+        if (!cat || !msg) { alert("সবগুলো তথ্য প্রদান করুন!"); return; }
+        const phone = "8801323630741";
+        const fullMsg = `*CASE REPORT*%0A%0A*Name:* ${name}%0A*Category:* ${cat}%0A*Details:* ${msg}`;
+        window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + fullMsg;
+    }
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let particlesArray = [];
+
+    class Particle {
+        constructor(x, y, dx, dy, size) { 
+            this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size; 
         }
-
-        resultDiv.style.display = "none";
-        loader.style.display = "block";
-        btn.disabled = true;
-        btn.innerText = "Processing...";
-
-        try {
-            // Using Cobalt API via a more stable request pattern
-            const response = await fetch("https://api.cobalt.tools/api/json", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-                    url: urlInput,
-                    videoQuality: "720"
-                })
-            });
-
-            const data = await response.json();
-
-            if (data.status === "error") {
-                throw new Error(data.text);
-            }
-
-            if (data.url || data.picker) {
-                const finalUrl = data.url || (data.picker && data.picker[0].url);
-                resultDiv.innerHTML = `
-                    <strong style="color:#28a745;">Success! Video is ready.</strong><br><br>
-                    <a href="${finalUrl}" target="_blank" class="download-link">Download Now</a>
-                `;
-                resultDiv.style.display = "block";
-            } else {
-                throw new Error("No download link found.");
-            }
-
-        } catch (error) {
-            console.error(error);
-            resultDiv.innerHTML = `<span style="color:#dc3545;">Failed to fetch. The link might be private or the server is busy.</span>`;
-            resultDiv.style.display = "block";
-        } finally {
-            loader.style.display = "none";
-            btn.disabled = false;
-            btn.innerText = "Get Download Link";
+        draw() { 
+            ctx.beginPath(); 
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
+            ctx.fillStyle = '#00d4ff';
+            ctx.fill(); 
+        }
+        update() {
+            if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
+            if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
+            this.x += this.dx; this.y += this.dy;
+            this.draw();
         }
     }
+
+    function init() {
+        particlesArray = [];
+        let n = (canvas.width * canvas.height) / 8000; 
+        for (let i = 0; i < n; i++) {
+            let size = Math.random() * 2 + 1;
+            let x = Math.random() * innerWidth;
+            let y = Math.random() * innerHeight;
+            let dx = (Math.random() * 0.8 - 0.4); 
+            let dy = (Math.random() * 0.8 - 0.4);
+            particlesArray.push(new Particle(x, y, dx, dy, size));
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0,0,innerWidth, innerHeight);
+        particlesArray.forEach(p => p.update());
+        for(let a=0; a<particlesArray.length; a++){
+            for(let b=a; b<particlesArray.length; b++){
+                let dist = ((particlesArray[a].x - particlesArray[b].x)**2) + ((particlesArray[a].y - particlesArray[b].y)**2);
+                if(dist < 12000){
+                    ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
+                }
+            }
+        }
+    }
+    window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
+    init(); animate();
 </script>
 
 </body>
-</html>
+    </html>
