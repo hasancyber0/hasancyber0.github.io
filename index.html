@@ -1,1 +1,83 @@
-fuck you re😭❤️‍🩹
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Video & Story Downloader</title>
+    <style>
+        :root { --primary: #6e8efb; --secondary: #a777e3; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; color: #333; }
+        .container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); width: 100%; max-width: 450px; text-align: center; }
+        h2 { margin-top: 0; color: #444; font-size: 24px; }
+        .input-box { margin: 25px 0; }
+        input { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 10px; font-size: 16px; transition: 0.3s; box-sizing: border-box; }
+        input:focus { border-color: var(--primary); outline: none; }
+        button { width: 100%; padding: 15px; background: linear-gradient(to right, var(--primary), var(--secondary)); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+        button:active { transform: scale(0.98); }
+        #result { margin-top: 20px; padding: 15px; border-radius: 10px; display: none; background: #f8f9fa; word-break: break-all; }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; display: none; margin: 10px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Story & Video Downloader</h2>
+    <p style="font-size: 14px; color: #777;">TikTok, Insta, FB বা CapCut লিঙ্ক দিন</p>
+    
+    <div class="input-box">
+        <input type="text" id="videoUrl" placeholder="লিঙ্কটি এখানে পেস্ট করুন...">
+    </div>
+    
+    <button id="dlBtn" onclick="handleDownload()">ডাউনলোড লিঙ্ক তৈরি করুন</button>
+    
+    <div class="loader" id="loader"></div>
+    <div id="result"></div>
+</div>
+
+<script>
+    async function handleDownload() {
+        const url = document.getElementById('videoUrl').value;
+        const resultDiv = document.getElementById('result');
+        const loader = document.getElementById('loader');
+        const btn = document.getElementById('dlBtn');
+
+        if (!url) {
+            alert("অনুগ্রহ করে ভিডিও বা স্টোরির লিঙ্ক দিন!");
+            return;
+        }
+
+        // UI Reset
+        resultDiv.style.display = "none";
+        loader.style.display = "block";
+        btn.disabled = true;
+
+        try {
+            // এটি একটি ডেমো API লজিক (Cobalt API এর মতো সার্ভিস ব্যবহার করে)
+            // বাস্তব কাজের জন্য আপনাকে একটি API Key বা ব্যাকএন্ড স্ক্রিপ্ট ব্যবহার করতে হবে
+            const response = await fetch("https://api.cobalt.tools/api/json", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    url: url,
+                    videoQuality: "720"
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.url) {
+                resultDiv.innerHTML = `<strong style="color:green;">সফল হয়েছে!</strong><br><br>
+                                       <a href="${data.url}" target="_blank" style="text-decoration:none; color:white; background:#28a745; padding:10px 20px; border-radius:5px; display:inline-block;">ভিডিওটি সেভ করুন</a>`;
+                resultDiv.style.display = "block";
+            } else {
+                throw new Error("ভিডিও পাওয়া যায়নি");
+            }
+
+        } catch (error) {
+            resultDiv.innerHTML = `<span style="color:red;">দুঃখিত! এই লিঙ্কটি কাজ করছে না। সঠিক লিঙ্ক দিন।</span>`;
+            resultDiv.style.display = "
+
