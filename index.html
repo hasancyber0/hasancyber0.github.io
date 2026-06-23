@@ -21,8 +21,7 @@
       --bg1:#03050b;
       --bg2:#08111d;
       --bg3:#0c1627;
-      --card:rgba(10,16,30,0.70);
-      --card-2:rgba(9,15,27,0.88);
+      --card:rgba(10,16,30,0.74);
       --line:rgba(0,255,195,0.14);
       --line-2:rgba(255,255,255,0.08);
       --text:#ecfffa;
@@ -32,12 +31,11 @@
       --pink:#ff4fd8;
       --purple:#9d5cff;
       --green:#53ff83;
+      --yellow:#ffe066;
       --shadow:0 0 30px rgba(0,255,195,0.12);
     }
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{ scroll-behavior:smooth; }
 
     body{
       min-height:100vh;
@@ -52,23 +50,23 @@
       position:relative;
     }
 
-    /* Background layers */
+    /* Background */
     .grid-bg{
       position:fixed;
       inset:0;
       background-image:
         linear-gradient(rgba(0,255,195,0.045) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,255,195,0.045) 1px, transparent 1px);
-      background-size:42px 42px;
+      background-size:40px 40px;
       animation:gridMove 15s linear infinite;
       pointer-events:none;
       z-index:0;
-      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.28));
+      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.25));
     }
 
     @keyframes gridMove{
       from{transform:translateY(0);}
-      to{transform:translateY(42px);}
+      to{transform:translateY(40px);}
     }
 
     .noise{
@@ -91,21 +89,21 @@
       filter:blur(40px);
       pointer-events:none;
       z-index:0;
-      opacity:0.18;
+      opacity:0.16;
       animation:floatOrb 10s ease-in-out infinite alternate;
     }
 
     .orb1{
-      width:260px;
-      height:260px;
+      width:240px;
+      height:240px;
       background:var(--neon);
       top:40px;
       left:-60px;
     }
 
     .orb2{
-      width:280px;
-      height:280px;
+      width:260px;
+      height:260px;
       background:var(--neon2);
       right:-70px;
       bottom:80px;
@@ -116,11 +114,11 @@
       width:180px;
       height:180px;
       background:var(--pink);
-      top:45%;
+      top:48%;
       left:50%;
       transform:translateX(-50%);
       animation-duration:14s;
-      opacity:0.12;
+      opacity:0.10;
     }
 
     @keyframes floatOrb{
@@ -134,16 +132,39 @@
       width:100%;
       height:100%;
       z-index:0;
-      opacity:0.14;
+      opacity:0.13;
       pointer-events:none;
     }
 
+    /* moving scan lines */
+    .scanlines{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:0.08;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.05) 0px,
+          rgba(255,255,255,0.05) 1px,
+          transparent 2px,
+          transparent 6px
+        );
+      animation:scanMove 7s linear infinite;
+    }
+
+    @keyframes scanMove{
+      from{transform:translateY(0);}
+      to{transform:translateY(24px);}
+    }
+
     .container{
-      width:min(1100px, 92%);
+      width:min(1040px, 92%);
       margin:0 auto;
       position:relative;
       z-index:2;
-      padding:28px 0 44px;
+      padding:26px 0 42px;
     }
 
     .hero{
@@ -151,14 +172,13 @@
       overflow:hidden;
       border-radius:28px;
       border:1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(12,18,32,0.88), rgba(8,13,24,0.72));
+      background:linear-gradient(180deg, rgba(12,18,32,0.90), rgba(8,13,24,0.74));
       backdrop-filter:blur(16px);
       box-shadow:
         0 20px 60px rgba(0,0,0,0.28),
         0 0 0 1px rgba(255,255,255,0.02) inset,
         var(--shadow);
-      padding:34px 26px 28px;
+      padding:28px 24px 24px;
       margin-top:18px;
     }
 
@@ -167,68 +187,63 @@
       position:absolute;
       inset:-1px;
       background:
-        linear-gradient(90deg, rgba(0,255,195,0.14), rgba(0,217,255,0.12), rgba(157,92,255,0.14), rgba(255,79,216,0.10));
+        linear-gradient(90deg,
+          rgba(0,255,195,0.14),
+          rgba(0,217,255,0.12),
+          rgba(157,92,255,0.14),
+          rgba(255,79,216,0.10)
+        );
       filter:blur(28px);
       z-index:0;
-      opacity:0.8;
+      opacity:0.85;
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      width:220px;
-      height:220px;
-      right:-60px;
-      top:-60px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(0,255,195,0.18), transparent 65%);
-      z-index:0;
-    }
-
-    .hero > *{
-      position:relative;
-      z-index:1;
-    }
+    .hero > *{ position:relative; z-index:1; }
 
     .title-row{
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:14px;
+      gap:10px;
       flex-wrap:wrap;
       text-align:center;
     }
 
-    .title-static{
-      font-family:"Orbitron", sans-serif;
-      font-weight:800;
-      letter-spacing:1.2px;
-      font-size:clamp(1.45rem, 3.4vw, 2.6rem);
-      color:#eafff9;
-      text-transform:uppercase;
-      text-shadow:0 0 18px rgba(255,255,255,0.06);
-      white-space:nowrap;
-    }
-
-    .bruno{
+    /* Same RGB effect for both */
+    .rgb-title{
       font-family:"Orbitron", sans-serif;
       font-weight:900;
-      font-size:clamp(1.8rem, 4.2vw, 3rem);
-      line-height:1;
-      letter-spacing:2px;
       text-transform:uppercase;
-      white-space:nowrap;
-      background:linear-gradient(90deg, #ffffff, var(--neon), var(--neon2), var(--pink), #ffffff);
+      letter-spacing:1.4px;
+      background:linear-gradient(
+        90deg,
+        #ffffff,
+        var(--neon),
+        var(--neon2),
+        var(--purple),
+        var(--pink),
+        #ffffff
+      );
       background-size:300% 100%;
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-      animation:rgbText 5s linear infinite;
+      animation:rgbText 5.2s linear infinite;
       text-shadow:
-        0 0 8px rgba(0,255,195,0.22),
-        0 0 16px rgba(0,217,255,0.14),
-        0 0 22px rgba(255,79,216,0.10);
-      filter:drop-shadow(0 0 10px rgba(0,255,195,0.18));
+        0 0 10px rgba(0,255,195,0.20),
+        0 0 18px rgba(0,217,255,0.12),
+        0 0 24px rgba(255,79,216,0.08);
+      filter:drop-shadow(0 0 10px rgba(0,255,195,0.15));
+      white-space:nowrap;
+    }
+
+    .title-static{
+      font-size:clamp(1.3rem, 3vw, 2.25rem);
+    }
+
+    .bruno{
+      font-size:clamp(1.35rem, 3.1vw, 2.15rem);
+      letter-spacing:1.8px;
     }
 
     @keyframes rgbText{
@@ -237,9 +252,9 @@
     }
 
     .hero-line{
-      width:min(720px, 100%);
+      width:min(700px, 100%);
       height:1px;
-      margin:20px auto 0;
+      margin:18px auto 0;
       background:linear-gradient(90deg, transparent, rgba(0,255,195,0.4), rgba(0,217,255,0.35), transparent);
       box-shadow:0 0 18px rgba(0,255,195,0.12);
     }
@@ -250,13 +265,13 @@
       border:1px solid var(--line);
       background:var(--card);
       border-radius:24px;
-      padding:24px;
+      padding:22px;
       box-shadow:
         0 18px 55px rgba(0,0,0,0.24),
         0 0 0 1px rgba(255,255,255,0.02) inset,
         var(--shadow);
       backdrop-filter:blur(14px);
-      margin-top:22px;
+      margin-top:20px;
     }
 
     .panel::before{
@@ -275,7 +290,7 @@
       font-size:1rem;
       font-weight:800;
       letter-spacing:1px;
-      margin-bottom:18px;
+      margin-bottom:16px;
       display:flex;
       align-items:center;
       gap:12px;
@@ -289,10 +304,13 @@
       filter:drop-shadow(0 0 8px rgba(0,255,195,0.35));
     }
 
+    /* 2x2 social grid */
     .social-grid{
       display:grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:14px;
+      max-width:700px;
+      margin:0 auto;
     }
 
     .social-btn{
@@ -303,12 +321,12 @@
       border:1px solid var(--line-2);
       background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
       border-radius:18px;
-      padding:18px 14px;
+      padding:17px 14px;
       display:flex;
       align-items:center;
       justify-content:center;
       gap:12px;
-      min-height:72px;
+      min-height:68px;
       transition:0.25s ease;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
     }
@@ -322,9 +340,7 @@
       transition:0.5s ease;
     }
 
-    .social-btn:hover::before{
-      transform:translateX(100%);
-    }
+    .social-btn:hover::before{ transform:translateX(100%); }
 
     .social-btn:hover{
       transform:translateY(-4px);
@@ -334,7 +350,7 @@
     }
 
     .social-btn i{
-      font-size:1.45rem;
+      font-size:1.4rem;
       color:var(--neon);
       width:28px;
       text-align:center;
@@ -349,14 +365,12 @@
 
     form{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:16px;
       margin-top:4px;
     }
 
-    .full{
-      grid-column:1 / -1;
-    }
+    .full{ grid-column:1 / -1; }
 
     .input-wrap{
       display:flex;
@@ -385,14 +399,11 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
     }
 
-    input::placeholder,
-    textarea::placeholder{
+    input::placeholder, textarea::placeholder{
       color:#89aea5;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus{
+    input:focus, select:focus, textarea:focus{
       border-color:rgba(0,255,195,0.42);
       box-shadow:0 0 0 4px rgba(0,255,195,0.08), 0 0 20px rgba(0,255,195,0.06);
       background:rgba(255,255,255,0.055);
@@ -404,7 +415,7 @@
     }
 
     textarea{
-      min-height:180px;
+      min-height:185px;
       resize:vertical;
       line-height:1.65;
     }
@@ -416,6 +427,7 @@
       margin-top:6px;
     }
 
+    /* Rainbow premium button */
     .submit-btn{
       position:relative;
       overflow:hidden;
@@ -426,34 +438,54 @@
       font-size:16px;
       font-weight:800;
       cursor:pointer;
-      color:#04140f;
-      background:linear-gradient(90deg, var(--neon), #7dffe2, var(--neon2));
-      background-size:200% 100%;
-      animation:buttonFlow 4s linear infinite;
+      color:#07130f;
+      background:linear-gradient(
+        90deg,
+        #00ffc3,
+        #00d9ff,
+        #9d5cff,
+        #ff4fd8,
+        #ffe066,
+        #53ff83,
+        #00ffc3
+      );
+      background-size:300% 100%;
+      animation:buttonFlow 5s linear infinite;
       transition:0.25s ease;
       box-shadow:
         0 14px 30px rgba(0,255,195,0.18),
         0 0 18px rgba(0,255,195,0.12);
     }
 
+    .submit-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform:translateX(-100%);
+      transition:0.6s ease;
+    }
+
+    .submit-btn:hover::before{
+      transform:translateX(100%);
+    }
+
     @keyframes buttonFlow{
       0%{ background-position:0% 50%; }
-      100%{ background-position:200% 50%; }
+      100%{ background-position:300% 50%; }
     }
 
     .submit-btn:hover{
       transform:translateY(-3px) scale(1.01);
       box-shadow:
         0 18px 34px rgba(0,255,195,0.22),
-        0 0 20px rgba(0,255,195,0.16);
+        0 0 22px rgba(0,255,195,0.16);
     }
 
-    .submit-btn i{
-      margin-right:8px;
-    }
+    .submit-btn i{ margin-right:8px; }
 
     .footer{
-      margin-top:20px;
+      margin-top:18px;
       padding:10px 2px 0;
       text-align:center;
       color:#91b9af;
@@ -462,30 +494,23 @@
     }
 
     .footer strong{
-      color:#dcfff5;
       font-family:"Orbitron", sans-serif;
-      letter-spacing:1px;
-    }
-
-    @media (max-width: 980px){
-      .social-grid{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      font-weight:800;
+      background:linear-gradient(90deg, #ffffff, var(--neon), var(--neon2), var(--pink), #ffffff);
+      background-size:300% 100%;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      animation:rgbText 5.2s linear infinite;
     }
 
     @media (max-width: 820px){
-      form{
-        grid-template-columns:1fr;
-      }
+      form{ grid-template-columns:1fr; }
     }
 
     @media (max-width: 640px){
-      .social-grid{
-        grid-template-columns:1fr;
-      }
-
       .hero{
-        padding:26px 16px 22px;
+        padding:24px 16px 20px;
         border-radius:22px;
       }
 
@@ -495,21 +520,33 @@
       }
 
       .title-row{
-        gap:8px;
+        gap:7px;
       }
 
-      .title-static{
-        font-size:1.15rem;
+      .social-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
       }
 
-      .bruno{
-        font-size:1.65rem;
+      .social-btn{
+        min-height:62px;
+        padding:14px 10px;
       }
+
+      .social-btn span{
+        font-size:14px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .title-static{ font-size:1.02rem; }
+      .bruno{ font-size:1.15rem; }
     }
   </style>
 </head>
 <body>
   <div class="grid-bg"></div>
+  <div class="scanlines"></div>
   <div class="noise"></div>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
@@ -519,8 +556,8 @@
   <div class="container">
     <section class="hero">
       <div class="title-row">
-        <div class="title-static">CYBER SPECIALIST</div>
-        <div class="bruno">BRUNO</div>
+        <div class="title-static rgb-title">CYBER SPECIALIST</div>
+        <div class="bruno rgb-title">BRUNO</div>
       </div>
       <div class="hero-line"></div>
     </section>
@@ -557,7 +594,7 @@
     <section class="panel">
       <h2 class="panel-title">
         <i class="fa-solid fa-file-circle-plus"></i>
-        Submit Problem
+        আপনার সমস্যাটি বলুন
       </h2>
 
       <form id="supportForm">
@@ -637,7 +674,7 @@
           <label for="problem">Describe Your Problem</label>
           <textarea id="problem" name="problem" placeholder="Write your problem in detail..." required></textarea>
           <p class="helper">
-            Submit চাপ দিলে তোমার লেখা সমস্যা এবং নাম (যদি দাও) সরাসরি WhatsApp chat-এ যাবে।
+            After clicking submit, your selected service and problem details will open directly in WhatsApp chat.
           </p>
         </div>
 
@@ -650,12 +687,12 @@
     </section>
 
     <div class="footer">
-      Designed for <strong>BRUNO</strong>
+      © 2026 Cyber Specialist <strong>Bruno</strong>
     </div>
   </div>
 
   <script>
-    // Matrix background
+    // Matrix / hacking animation
     const canvas = document.getElementById("matrixCanvas");
     const ctx = canvas.getContext("2d");
 
@@ -681,21 +718,28 @@
       ctx.fillStyle = "rgba(3, 5, 11, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#00ffc3";
-      ctx.font = fontSize + "px monospace";
-
       for(let i = 0; i < drops.length; i++){
-        const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        const char = chars.charAt(Math.floor(Math.random() * chars.length));
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
 
-        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+        // main text
+        ctx.fillStyle = "#00ffc3";
+        ctx.font = fontSize + "px monospace";
+        ctx.fillText(char, x, y);
+
+        // glow tail
+        ctx.fillStyle = "rgba(0,255,195,0.12)";
+        ctx.fillRect(x, y - fontSize * 2, 2, fontSize * 2);
+
+        if(y > canvas.height && Math.random() > 0.975){
           drops[i] = 0;
         }
         drops[i]++;
       }
     }
 
-    setInterval(drawMatrix, 40);
+    setInterval(drawMatrix, 42);
 
     // WhatsApp submit
     const form = document.getElementById("supportForm");
