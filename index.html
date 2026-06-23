@@ -31,7 +31,6 @@
       --green:#53ff83;  
       --yellow:#ffe066;  
       --shadow:0 0 34px rgba(0,255,195,0.18);  
-      --shadow-small:0 0 14px rgba(0,255,195,0.12); /* Bruno বক্সের জন্য ছোট গ্লো শ্যাডো */  
     }  
   
     html{ scroll-behavior:smooth; }  
@@ -168,7 +167,7 @@
     .hero-container {  
       display: flex;  
       flex-direction: column;  
-      gap: 14px;  
+      gap: 16px;  
       margin-top: 18px;  
     }  
   
@@ -190,13 +189,9 @@
       text-align: center;  
     }  
   
-    /* প্রথম বক্সটির (Bruno) সাইজ এবং শ্যাডো ছোট করার স্টাইল */  
+    /* Bruno বক্সটি এখন সম্পূর্ণ দ্বিতীয় বক্সের মতো কালার ও গ্লো পাবে, শুধু সাইজে ছোট হবে */  
     .hero-box.bruno-box {  
-      padding: 12px 20px; /* প্যাডিং কমিয়ে বক্স ছোট করা হয়েছে */  
-      box-shadow:  
-        0 10px 30px rgba(0,0,0,0.22),  
-        0 0 0 1px rgba(255,255,255,0.02) inset,  
-        var(--shadow-small);  
+      padding: 10px 24px; /* প্যাডিং কমিয়ে বক্স ছোট করা হয়েছে */  
     }  
   
     .hero-box::before {  
@@ -214,15 +209,8 @@
       opacity: 0.9;  
     }  
   
-    /* প্রথম বক্সের ব্যাকগ্রাউন্ড গ্লো ব্লার হালকা কমানো হয়েছে */  
-    .hero-box.bruno-box::before {  
-      filter: blur(12px);  
-      opacity: 0.6;  
-    }  
-  
     .hero-box > * { position: relative; z-index: 1; }  
   
-    /* সাইবার সিকিউরিটি এক্সপার্ট লেখাটি হালকা বড় করা হয়েছে */  
     .hero-title{  
       font-family:"Orbitron", sans-serif;  
       font-weight:900;  
@@ -259,7 +247,7 @@
       font-weight:900;  
       text-transform:uppercase;  
       letter-spacing:1.5px;  
-      font-size:clamp(1rem, 2.4vw, 1.4rem);  
+      font-size:clamp(1rem, 2.4vw, 1.5rem);  
       line-height:1.2;  
       white-space:nowrap;  
       background:linear-gradient(  
@@ -543,7 +531,7 @@
         90deg,  
         #ffffff 0%,  
         #00ffc3 14%,  
-        #00d9ff(28%,  
+        #00d9ff 28%,  
         #9d5cff 42%,  
         #ff4fd8 58%,  
         #ffe066 74%,  
@@ -571,7 +559,7 @@
       }  
   
       .hero-box.bruno-box {  
-        padding: 10px 14px; /* মোবাইল স্ক্রিনেও যেন ছোট দেখায় */  
+        padding: 10px 14px; /* মোবাইল রেসপনসিভনেস ঠিক রাখার জন্য */  
       }  
   
       .panel{  
