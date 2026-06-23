@@ -31,7 +31,7 @@
       --green:#53ff83;  
       --yellow:#ffe066;  
       --shadow:0 0 34px rgba(0,255,195,0.18);  
-      --shadow-small:0 0 15px rgba(0,0,0,0.5); /* প্রথম বক্সের জন্য ছোট শ্যাডো */
+      --shadow-small:0 0 14px rgba(0,255,195,0.12); /* Bruno বক্সের জন্য ছোট গ্লো শ্যাডো */  
     }  
   
     html{ scroll-behavior:smooth; }  
@@ -168,7 +168,7 @@
     .hero-container {  
       display: flex;  
       flex-direction: column;  
-      gap: 16px;  
+      gap: 14px;  
       margin-top: 18px;  
     }  
   
@@ -190,12 +190,12 @@
       text-align: center;  
     }  
   
-    /* প্রথম বক্সটির (Bruno) জন্য আলাদা স্টাইল - শ্যাডো ছোট এবং ডার্ক থিম */  
+    /* প্রথম বক্সটির (Bruno) সাইজ এবং শ্যাডো ছোট করার স্টাইল */  
     .hero-box.bruno-box {  
-      background: linear-gradient(180deg, rgba(4,8,15,0.95), rgba(2,5,10,0.90));  
-      border: 1px solid rgba(255,255,255,0.05);  
+      padding: 12px 20px; /* প্যাডিং কমিয়ে বক্স ছোট করা হয়েছে */  
       box-shadow:  
-        0 8px 25px rgba(0,0,0,0.4),  
+        0 10px 30px rgba(0,0,0,0.22),  
+        0 0 0 1px rgba(255,255,255,0.02) inset,  
         var(--shadow-small);  
     }  
   
@@ -214,10 +214,10 @@
       opacity: 0.9;  
     }  
   
-    /* প্রথম বক্সের ব্যাকগ্রাউন্ড গ্লো আরও হালকা করা হয়েছে */  
+    /* প্রথম বক্সের ব্যাকগ্রাউন্ড গ্লো ব্লার হালকা কমানো হয়েছে */  
     .hero-box.bruno-box::before {  
-      opacity: 0.4;  
-      filter: blur(10px);  
+      filter: blur(12px);  
+      opacity: 0.6;  
     }  
   
     .hero-box > * { position: relative; z-index: 1; }  
@@ -228,7 +228,7 @@
       font-weight:900;  
       text-transform:uppercase;  
       letter-spacing:1.4px;  
-      font-size:clamp(1.3rem, 3.2vw, 2.4rem); /* সাইজ হালকা বাড়ানো হয়েছে */  
+      font-size:clamp(1.3rem, 3.2vw, 2.4rem);  
       line-height:1.2;  
       white-space:nowrap;  
       background:linear-gradient(  
@@ -259,7 +259,7 @@
       font-weight:900;  
       text-transform:uppercase;  
       letter-spacing:1.5px;  
-      font-size:clamp(1rem, 2.4vw, 1.5rem);  
+      font-size:clamp(1rem, 2.4vw, 1.4rem);  
       line-height:1.2;  
       white-space:nowrap;  
       background:linear-gradient(  
@@ -543,7 +543,7 @@
         90deg,  
         #ffffff 0%,  
         #00ffc3 14%,  
-        #00d9ff 28%,  
+        #00d9ff(28%,  
         #9d5cff 42%,  
         #ff4fd8 58%,  
         #ffe066 74%,  
@@ -568,6 +568,10 @@
       .hero-box {  
         padding: 16px 14px;  
         border-radius: 16px;  
+      }  
+  
+      .hero-box.bruno-box {  
+        padding: 10px 14px; /* মোবাইল স্ক্রিনেও যেন ছোট দেখায় */  
       }  
   
       .panel{  
