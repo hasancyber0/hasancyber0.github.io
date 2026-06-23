@@ -11,15 +11,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
     :root{
-      --bg1:#04101a; --bg2:#0a1727; --bg3:#101f33;
-      --text:#ecfffa; --neon:#00ffc3; --neon2:#00d9ff;
-      --shadow:0 0 34px rgba(0,255,195,0.18);
+      --bg1:#04101a;
+      --bg2:#0a1727;
+      --bg3:#101f33;
+      --card:rgba(10,16,30,0.78);
       --line:rgba(0,255,195,0.18);
       --line-2:rgba(255,255,255,0.08);
+      --text:#ecfffa;
+      --neon:#00ffc3;
+      --neon2:#00d9ff;
+      --pink:#ff4fd8;
+      --shadow:0 0 34px rgba(0,255,195,0.18);
     }
+
+    html{scroll-behavior:smooth;}
 
     body{
       min-height:100vh;
@@ -27,48 +39,22 @@
       color:var(--text);
       overflow-x:hidden;
       background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+    }
+
+    .container{
+      width:min(1040px,92%);
+      margin:0 auto;
+      padding:26px 0;
       position:relative;
-    }
-
-    .grid-bg,.noise,#matrixCanvas,.scanlines,.orb{position:fixed;inset:0;pointer-events:none;}
-
-    .container{width:min(1040px,92%);margin:0 auto;position:relative;z-index:2;padding:26px 0;}
-
-    /* NEW TOP BOX */
-    .top-box{
-      margin-top:18px;
-      padding:16px;
-      text-align:center;
-      border-radius:18px;
-      border:1px solid rgba(0,255,195,0.18);
-      background:rgba(10,16,30,0.75);
-      backdrop-filter:blur(14px);
-      box-shadow:0 0 25px rgba(0,255,195,0.12);
-    }
-
-    .top-text{
-      font-family:"Orbitron";
-      font-weight:900;
-      color:var(--neon);
-      letter-spacing:1px;
-    }
-
-    .top-sub{
-      font-family:"Orbitron";
-      font-weight:800;
-      margin-top:6px;
-      background:linear-gradient(90deg,#fff,#00ffc3,#00d9ff,#9d5cff,#ff4fd8,#fff);
-      -webkit-background-clip:text;
-      color:transparent;
+      z-index:2;
     }
 
     /* HERO */
     .hero{
-      margin-top:18px;
-      padding:26px;
-      border-radius:28px;
       border:1px solid var(--line);
-      background:rgba(10,16,30,0.78);
+      border-radius:28px;
+      padding:26px;
+      background:rgba(10,16,30,0.75);
       box-shadow:var(--shadow);
       text-align:center;
     }
@@ -76,12 +62,31 @@
     .hero-title{
       font-family:"Orbitron";
       font-weight:900;
-      background:linear-gradient(90deg,#fff,#00ffc3,#00d9ff,#9d5cff,#ff4fd8,#fff);
-      -webkit-background-clip:text;
-      color:transparent;
+      font-size:clamp(1.1rem,3vw,2rem);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--neon);
+      margin-bottom:12px;
     }
 
-    .hero-line{height:1px;background:linear-gradient(90deg,transparent,var(--neon),transparent);margin-top:14px;}
+    .hero-name-box{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:16px;
+      border:1px solid rgba(0,255,195,0.25);
+      background:rgba(0,255,195,0.08);
+      font-family:"Orbitron";
+      font-weight:900;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:var(--neon);
+    }
+
+    .hero-line{
+      margin-top:18px;
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--neon),transparent);
+    }
 
     /* PANEL */
     .panel{
@@ -89,67 +94,64 @@
       padding:22px;
       border-radius:24px;
       border:1px solid var(--line);
-      background:rgba(10,16,30,0.75);
+      background:var(--card);
     }
 
     .panel-title{
       font-family:"Orbitron";
       font-weight:800;
-      margin-bottom:14px;
+      margin-bottom:16px;
+      display:flex;
+      gap:10px;
+      align-items:center;
     }
 
-    /* SOCIAL */
-    .social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .social-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
 
     .social-btn{
       padding:16px;
-      border-radius:18px;
-      text-align:center;
+      border-radius:16px;
       border:1px solid var(--line-2);
       text-decoration:none;
       color:var(--text);
-      transition:.3s;
+      text-align:center;
     }
 
-    .social-btn:hover{
-      transform:translateY(-4px);
-      border-color:var(--neon);
+    form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
     }
 
-    /* FORM */
+    .full{grid-column:1/-1;}
+
     input,select,textarea{
-      width:100%;
       padding:14px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,0.1);
-      background:rgba(255,255,255,0.05);
-      color:#fff;
+      border:1px solid var(--line-2);
+      background:rgba(255,255,255,0.04);
+      color:white;
     }
 
     .submit-btn{
-      margin-top:10px;
       padding:16px;
       border:none;
       border-radius:16px;
       font-weight:800;
+      background:linear-gradient(90deg,var(--neon),var(--neon2),var(--pink));
       cursor:pointer;
-      background:linear-gradient(90deg,#00ffc3,#00d9ff,#9d5cff,#ff4fd8,#ffe066);
     }
 
-    /* FOOTER FIX */
     .footer{
-      margin-top:18px;
       text-align:center;
-      white-space:nowrap;
-    }
-
-    .footer-text{
+      margin-top:18px;
+      font-size:12px;
       font-family:"Orbitron";
-      font-weight:800;
-      font-size:13px;
-      background:linear-gradient(90deg,#fff,#00ffc3,#00d9ff,#9d5cff,#ff4fd8,#fff);
-      -webkit-background-clip:text;
-      color:transparent;
+      letter-spacing:1px;
     }
   </style>
 </head>
@@ -158,21 +160,19 @@
 
 <div class="container">
 
-  <!-- NEW BOX -->
-  <div class="top-box">
-    <div class="top-text">HEY I'M BRUNO</div>
-    <div class="top-sub">CYBER SECURITY EXPERT</div>
-  </div>
-
-  <!-- HERO -->
+  <!-- HERO (UPDATED) -->
   <section class="hero">
+
     <div class="hero-title">CYBER SECURITY EXPERT</div>
+
+    <div class="hero-name-box">HEY I'M BRUNO</div>
+
     <div class="hero-line"></div>
   </section>
 
-  <!-- PANEL -->
+  <!-- SOCIAL -->
   <section class="panel">
-    <h2 class="panel-title">My Information</h2>
+    <h2 class="panel-title"><i class="fa fa-user"></i> My Information</h2>
 
     <div class="social-grid">
       <a class="social-btn" href="#">Facebook</a>
@@ -184,24 +184,27 @@
 
   <!-- FORM -->
   <section class="panel">
-    <h2 class="panel-title">Tell us your problem</h2>
+    <h2 class="panel-title"><i class="fa fa-file"></i> Tell us your problem</h2>
 
     <form id="supportForm">
-      <input type="text" placeholder="Name (optional)">
-      <select>
+      <input class="full" type="text" placeholder="Your Name (optional)">
+
+      <select class="full">
         <option>Select Service</option>
       </select>
-      <textarea placeholder="Write your problem"></textarea>
-      <button class="submit-btn">Submit on WhatsApp</button>
+
+      <textarea class="full" placeholder="Describe your problem"></textarea>
+
+      <button class="submit-btn full">Submit on WhatsApp</button>
     </form>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (UPDATED SINGLE LINE) -->
   <div class="footer">
-    <span class="footer-text">© 2026 CYBER SECURITY EXPERT BRUNO</span>
+    © 2026 CYBER SECURITY EXPERT BRUNO
   </div>
 
 </div>
 
 </body>
-      </html>
+</html>
