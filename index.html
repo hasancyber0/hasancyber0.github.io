@@ -164,12 +164,13 @@
       padding:26px 0 42px;  
     }  
   
+    /* হিরো কন্টেইনার ফিক্স */  
     .hero-container {  
       display: flex;  
       flex-direction: column;  
-      align-items: center; /* কন্টেইনারের ভেতরের সব বক্স একদম সেন্টারে আনবে */  
+      align-items: center;  
       width: 100%;  
-      gap: 16px;  
+      gap: 12px;  
       margin-top: 18px;  
     }  
   
@@ -192,12 +193,13 @@
       width: 100%;  
     }  
   
-    /* ১০০০% নিখুঁত সেন্টারিং এবং সমান ডানে-বামে গ্যাপ রাখার জন্য মডিফাইড ক্লাস */  
-    .hero-box.bruno-box {  
+    /* Your Bruno ছোট বক্সের জন্য বিশেষ স্টাইল */  
+    .hero-box.bruno-small-box {  
       width: auto;  
-      display: inline-flex;     
-      margin: 0 auto;           
-      padding: 14px 35px;       
+      display: inline-flex;  
+      padding: 10px 30px;  
+      border-radius: 14px;  
+      margin-top: -2px; /* মেইন বক্সের সাথে সুন্দর স্পেসিং ধরে রাখার জন্য */  
     }  
   
     .hero-box::before {  
@@ -222,7 +224,7 @@
       font-weight:900;  
       text-transform:uppercase;  
       letter-spacing:1.4px;  
-      font-size:clamp(1.3rem, 3.2vw, 2.4rem);  
+      font-size:clamp(1.2rem, 3.2vw, 2.4rem);  
       line-height:1.2;  
       white-space:nowrap;  
       background:linear-gradient(  
@@ -248,24 +250,23 @@
       filter:drop-shadow(0 0 10px rgba(0,255,195,0.14));  
     }  
   
+    /* Your Bruno লেখার সুন্দর ফন্ট ও গ্লো ইফেক্ট */  
     .hero-subtitle{  
       font-family:"Orbitron", sans-serif;  
-      font-weight:900;  
+      font-weight:800;  
       text-transform:uppercase;  
-      letter-spacing: 1px;  
-      font-size:clamp(1rem, 2.4vw, 1.5rem);  
+      letter-spacing: 1.2px;  
+      font-size:clamp(0.85rem, 2.2vw, 1.2rem);  
       line-height:1.2;  
       white-space:nowrap;  
       display: block;  
-      width: 100%;  
       text-align: center;  
       background:linear-gradient(  
         90deg,  
         #ffffff 0%,  
-        #ffe066 18%,  
-        #ff4fd8 38%,  
-        #9d5cff 58%,  
-        #00d9ff 78%,  
+        #00ffc3 25%,  
+        #00d9ff 50%,  
+        #ff4fd8 75%,  
         #ffffff 100%  
       );  
       background-size:300% 100%;  
@@ -274,9 +275,8 @@
       color:transparent;  
       animation:brunoGlow 4.5s linear infinite;  
       text-shadow:  
-        0 0 10px rgba(255,224,102,0.18),  
-        0 0 18px rgba(255,79,216,0.14),  
-        0 0 24px rgba(0,217,255,0.10);  
+        0 0 8px rgba(0,255,195,0.2),  
+        0 0 15px rgba(0,217,255,0.15);  
     }  
   
     @keyframes rgbText{  
@@ -567,8 +567,8 @@
         border-radius: 16px;  
       }  
   
-      .hero-box.bruno-box {  
-        padding: 12px 24px;   
+      .hero-box.bruno-small-box {  
+        padding: 8px 20px;   
       }  
   
       .panel{  
@@ -595,7 +595,7 @@
       }  
   
       .hero-subtitle{  
-        font-size:clamp(.9rem, 4vw, 1.15rem);  
+        font-size:clamp(.8rem, 3.8vw, 1.05rem);  
       }  
   
       .problem-heading{  
@@ -605,13 +605,13 @@
   
     @media (max-width: 420px){  
       .hero-title{  
-        font-size:1rem;  
-        letter-spacing:.8px;  
+        font-size:0.95rem;  
+        letter-spacing:1px;  
       }  
   
       .hero-subtitle{  
-        font-size:.82rem;  
-        letter-spacing:.8px;  
+        font-size:.78rem;  
+        letter-spacing:1px;  
       }  
   
       .problem-heading{  
@@ -631,11 +631,12 @@
   
   <div class="container">  
     <div class="hero-container">  
-      <section class="hero-box bruno-box">  
-        <div class="hero-subtitle">HEY I'M YOUR BRUNO</div>  
-      </section>  
       <section class="hero-box">  
         <div class="hero-title">CYBER SECURITY EXPERT</div>  
+      </section>  
+        
+      <section class="hero-box bruno-small-box">  
+        <div class="hero-subtitle">Your Bruno</div>  
       </section>  
     </div>  
   
