@@ -161,65 +161,32 @@
       margin:0 auto;  
       position:relative;  
       z-index:2;  
-      padding:10px 0 42px; 
+      padding:10px 0 42px; /* Top padding কমানো হয়েছে */
     }  
   
     .hero-container {  
       display: flex;  
       flex-direction: column;  
-      gap: 10px; 
-      margin-top: 5px; 
+      gap: 10px; /* গ্যাপ কমানো হয়েছে */
+      margin-top: 5px; /* মার্জিন কমানো হয়েছে */
     }  
   
     .profile-pic-center {  
       display: flex;  
       justify-content: center;  
       width: 100%;  
-      margin-bottom: 5px; 
+      margin-bottom: 5px; /* নিচের মার্জিন কমানো হয়েছে */
     }  
   
-    /* Animated RGB Border on static profile picture */
-    .round-profile-container {
-      position: relative;
-      width: 110px;
-      height: 110px;
-    }
-
-    .round-profile-container::before {
-      content: '';
-      position: absolute;
-      top: -3px; left: -3px; bottom: -3px; right: -3px;
-      background: linear-gradient(0deg,  
-          #ffffff 0%,  
-          #00ffc3 14%,  
-          #00d9ff 28%,  
-          #9d5cff 42%,  
-          #ff4fd8 58%,  
-          #ffe066 74%,  
-          #53ff83 88%,  
-          #ffffff 100%
-      );
-      background-size: 300% 300%;
-      border-radius: 50%;
-      animation: rgbBorderChangeSlow 12s linear infinite; /* slow color transition */
-      z-index: 1;
-    }
-
     .round-profile {  
-      width: 100%;  
-      height: 100%;  
+      width: 110px;  
+      height: 110px;  
       border-radius: 50%;  
       object-fit: cover;  
-      position: relative;
-      z-index: 2; /* Image on top of border */
-      display: block;
-    }
-
-    @keyframes rgbBorderChangeSlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+      border: 3px solid var(--neon);  
+      box-shadow: 0 0 15px rgba(0, 255, 195, 0.4);  
+      backdrop-filter: blur(8px);  
+    }  
   
     .hero-box {  
       position: relative;  
@@ -612,7 +579,7 @@
         border-radius: 16px;  
       }  
   
-      .round-profile-container {  
+      .round-profile {  
         width: 100px;  
         height: 100px;  
       }  
@@ -655,7 +622,7 @@
     }  
   
     @media (max-width: 420px){  
-      .round-profile-container {  
+      .round-profile {  
         width: 90px;  
         height: 90px;  
       }  
@@ -688,9 +655,7 @@
   <div class="container">  
     <div class="hero-container">  
       <div class="profile-pic-center">  
-        <div class="round-profile-container">
-          <img src="https://i.ibb.co/NdSDSKNx/IMG-20260623-034343-99.jpg" alt="Bruno Profile" class="round-profile">  
-        </div>
+        <img src="https://i.ibb.co/NdSDSKNx/IMG-20260623-034343-99.jpg" alt="Bruno Profile" class="round-profile">  
       </div>  
   
       <section class="hero-box">  
