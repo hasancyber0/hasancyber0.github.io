@@ -178,65 +178,24 @@
       margin-bottom: 5px; /* নিচের মার্জিন কমানো হয়েছে */
     }  
   
-    .
-      animation: rgbBorderFlow 10s linear infinite;
-    }  .round-profile {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-  padding: 3px;
-
-  /* neon gradient border */
-  background: linear-gradient(
-    45deg,
-    #00ffc3,
-    #00d9ff,
-    #9d5cff,
-    #ff4fd8,
-    #ffe066,
-    #53ff83
-  );
-
-  background-size: 300% 300%;
-  animation: borderGlow 4s linear infinite;
-
-  /* ভিতরের ছবি আলাদা করার জন্য */
-  box-shadow: 0 0 20px rgba(0,255,195,0.35);
-}
-
-/* ভিতরের image clean রাখার জন্য */
-.round-profile {
-  display: block;
-}
-
-/* animation */
-@keyframes borderGlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
-           }
-
-    /* RGB বর্ডার অ্যানিমেশন কিফ্রেম */
-    @keyframes rgbBorderFlow {
-      0% {
-        background-image: linear-gradient(var(--bg1), var(--bg1)), linear-gradient(0deg, var(--neon), var(--neon2), var(--pink), var(--purple), var(--green), var(--yellow), var(--neon));
-        box-shadow: 0 0 15px rgba(0, 255, 195, 0.4);
-      }
-      25% {
-        box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
-      }
-      50% {
-        background-image: linear-gradient(var(--bg1), var(--bg1)), linear-gradient(180deg, var(--neon), var(--neon2), var(--pink), var(--purple), var(--green), var(--yellow), var(--neon));
-        box-shadow: 0 0 15px rgba(255, 79, 216, 0.4);
-      }
-      75% {
-        box-shadow: 0 0 15px rgba(157, 92, 255, 0.4);
-      }
-      100% {
-        background-image: linear-gradient(var(--bg1), var(--bg1)), linear-gradient(360deg, var(--neon), var(--neon2), var(--pink), var(--purple), var(--green), var(--yellow), var(--neon));
-        box-shadow: 0 0 15px rgba(0, 255, 195, 0.4);
-      }
+    .     .round-profile {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      /* বর্ডার সাইজ এবং অ্যানিমেশনের জন্য আপডেট */
+      border: 4px solid transparent;
+      background-image: linear-gradient(var(--bg1), var(--bg1)), 
+                        linear-gradient(90deg, #00ffc3, #00d9ff, #9d5cff, #ff4fd8, #00ffc3);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: 300% 300%;
+      animation: rgbText 5.5s linear infinite; /* আগে থেকেই থাকা কালার অ্যানিমেশন ব্যবহার করা হলো */
+      box-shadow: 0 0 20px rgba(0, 255, 195, 0.4);
+      backdrop-filter: blur(8px);
     }
+
+    }  
   
     .hero-box {  
       position: relative;  
@@ -927,4 +886,4 @@ ${problem}`;
     });  
   </script>  
 </body>  
-</html>
+              </html>
